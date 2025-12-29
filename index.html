@@ -9,149 +9,68 @@
   <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
 
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { font-family: Arial, sans-serif; background-color: #f4f4f4; color:#333; }
 
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f4f4f4;
-      color: #333;
-    }
-
-    /* NAVBAR */
+    /* NAVBAR - THINNER */
     nav {
       background: linear-gradient(90deg, #66ccff, #023e8a);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 12px 20px;
-      position: fixed;
-      top: 0;
-      width: 100%;
-      z-index: 1000;
+      display:flex; justify-content:space-between; align-items:center;
+      flex-wrap:wrap; padding:8px 20px; position:fixed; top:0; width:100%; z-index:1000;
     }
 
     .logo {
-      font-family: 'Pacifico', cursive;
-      font-size: 1.8em;
-      color: white;
-      text-decoration: none;
+      font-family:'Pacifico', cursive;
+      font-size:1.6em;
+      color:white;
+      text-decoration:none;
     }
 
-    .nav-links {
-      display: flex;
-      gap: 20px;
-      align-items: center;
+    .nav-links { display:flex; gap:15px; align-items:center; }
+
+    .nav-links a, .dropdown span {
+      color:white; text-decoration:none; padding:6px 10px;
+      cursor:pointer; white-space:nowrap;
     }
 
-    .nav-links a,
-    .dropdown span {
-      color: white;
-      text-decoration: none;
-      padding: 8px 12px;
-      cursor: pointer;
-      white-space: nowrap;
+    .nav-links a:hover, .dropdown span:hover {
+      background: rgba(0,0,0,0.2); border-radius:6px;
     }
 
-    .nav-links a:hover,
-    .dropdown span:hover {
-      background: rgba(0,0,0,0.2);
-      border-radius: 6px;
-    }
-
-    .dropdown {
-      position: relative;
-    }
-
+    .dropdown { position:relative; }
     .dropdown-content {
-      display: none;
-      position: absolute;
-      top: 100%;
-      left: 0;
-      background-color: #023e8a;
-      min-width: 160px;
-      border-radius: 6px;
-      overflow: hidden;
+      display:none; position:absolute; top:100%; left:0;
+      background-color:#023e8a; min-width:160px; border-radius:6px; overflow:hidden;
     }
+    .dropdown-content a { display:block; padding:10px; color:white; text-decoration:none; }
+    .dropdown-content a:hover { background: rgba(0,0,0,0.2); }
+    .dropdown:hover .dropdown-content { display:block; }
 
-    .dropdown-content a {
-      display: block;
-      padding: 10px;
-      color: white;
-      text-decoration: none;
-    }
-
-    .dropdown-content a:hover {
-      background: rgba(0,0,0,0.2);
-    }
-
-    .dropdown:hover .dropdown-content {
-      display: block;
-    }
-
-    .social-icons {
-      display: flex;
-      gap: 14px;
-    }
-
-    .social-icons img {
-      width: 22px;
-      height: 22px;
-    }
+    .social-icons { display:flex; gap:14px; }
+    .social-icons img { width:20px; height:20px; }
 
     /* MAIN CONTENT */
-    main {
-      padding: 140px 20px 40px;
-      max-width: 900px;
-      margin: auto;
-    }
-
+    main { padding:120px 20px 40px; max-width:900px; margin:auto; }
     .card {
-      background: white;
-      padding: 40px;
-      border-radius: 16px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-      text-align: center;
+      background:white; padding:40px; border-radius:16px;
+      box-shadow:0 4px 12px rgba(0,0,0,0.15); text-align:center;
     }
 
-    h1 {
-      font-size: 2.5em;
-      color: #0077b6;
-      margin-bottom: 20px;
-    }
-
-    p {
-      font-size: 1.2em;
-    }
+    h1 { font-size:2.5em; color:#0077b6; margin-bottom:20px; }
+    p { font-size:1.2em; }
 
     /* MOBILE */
-    @media (max-width: 768px) {
-      nav {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      .nav-links {
-        flex-direction: column;
-        width: 100%;
-        margin-top: 10px;
-      }
-
-      .social-icons {
-        margin-top: 10px;
-      }
-
-      main {
-        padding-top: 180px;
-      }
+    @media(max-width:768px){
+      nav{flex-direction:column; align-items:flex-start;}
+      .nav-links{flex-direction:column; width:100%; margin-top:10px;}
+      .social-icons{margin-top:10px;}
+      main{padding-top:160px;}
     }
   </style>
 </head>
 <body>
 
+  <!-- NAVBAR -->
   <nav>
     <a href="index.html" class="logo">ReyRey</a>
 
@@ -173,22 +92,17 @@
     </div>
 
     <div class="social-icons">
-      <a href="mailto:your-email@gmail.com">
-        <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" alt="Gmail">
-      </a>
-      <a href="https://discord.com">
-        <img src="https://cdn-icons-png.flaticon.com/512/2111/2111370.png" alt="Discord">
-      </a>
-      <a href="https://instagram.com">
-        <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" alt="Instagram">
-      </a>
+      <a href="mailto:your-email@gmail.com"><img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" alt="Gmail"></a>
+      <a href="https://discord.com"><img src="https://cdn-icons-png.flaticon.com/512/2111/2111370.png" alt="Discord"></a>
+      <a href="https://instagram.com"><img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" alt="Instagram"></a>
     </div>
   </nav>
 
+  <!-- MAIN CONTENT -->
   <main>
     <div class="card">
-      <h1>Welcome to ReyRey's Cricket World</h1>
-      <p>From pacer to keeper. This is my story. Use the navbar to explore the site.</p>
+      <h1>Welcome to ReyRey</h1>
+      <p>The beginning of a cricketer's journey. Use the navbar to explore the site.</p>
     </div>
   </main>
 
