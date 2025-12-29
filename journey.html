@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Journey - ReyRey</title>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { font-family: Arial, sans-serif; background-color: #f4f4f4; color:#333; }
+
+    /* NAVBAR - THINNER */
+    nav {
+      background: linear-gradient(90deg, #66ccff, #023e8a);
+      display:flex; justify-content:space-between; align-items:center;
+      flex-wrap:wrap; padding:8px 20px; position:fixed; top:0; width:100%; z-index:1000;
+    }
+
+    .logo { font-family:'Pacifico', cursive; font-size:1.6em; color:white; text-decoration:none; }
+    .nav-links { display:flex; gap:15px; align-items:center; }
+    .nav-links a, .dropdown span { color:white; text-decoration:none; padding:6px 10px; cursor:pointer; white-space:nowrap; font-size:1em; }
+    .nav-links a:hover, .dropdown span:hover { background: rgba(0,0,0,0.2); border-radius:6px; }
+
+    .dropdown { position:relative; }
+    .dropdown-content {
+      display:none; position:absolute; top:100%; left:0;
+      background-color:#023e8a; min-width:160px; border-radius:6px; overflow:hidden;
+    }
+    .dropdown-content a { display:block; padding:10px; color:white; text-decoration:none; font-size:1em; }
+    .dropdown-content a:hover { background: rgba(0,0,0,0.2); }
+    .dropdown:hover .dropdown-content { display:block; }
+
+    .social-icons { display:flex; gap:14px; }
+    .social-icons img { width:20px; height:20px; }
+
+    /* MAIN CONTENT */
+    main { padding:120px 20px 40px; max-width:1000px; margin:auto; }
+    h1 { font-size:2.5em; color:#0077b6; margin-bottom:20px; text-align:center; }
+    h2 { font-size:1.8em; margin-bottom:15px; color:#0077b6; }
+    p { font-size:1.2em; margin-bottom:15px; }
+
+    .section {
+      background:white; padding:40px; border-radius:16px;
+      box-shadow:0 4px 12px rgba(0,0,0,0.15); margin-bottom:40px;
+    }
+
+    /* HORIZONTAL SCROLL SECTION */
+    .horizontal-scroll {
+      display:flex;
+      overflow-x:auto;
+      gap:20px;
+      padding:20px 0;
+    }
+    .horizontal-scroll::-webkit-scrollbar { height:8px; }
+    .horizontal-scroll::-webkit-scrollbar-thumb { background:#0077b6; border-radius:4px; }
+
+    .card {
+      flex:0 0 250px; 
+      background:#66ccff;
+      color:white;
+      padding:20px;
+      border-radius:16px;
+      box-shadow:0 4px 8px rgba(0,0,0,0.2);
+      text-align:center;
+    }
+
+    @media(max-width:768px){
+      nav{flex-direction:column; align-items:flex-start;}
+      .nav-links{flex-direction:column; width:100%; margin-top:10px;}
+      .social-icons{margin-top:10px;}
+      main{padding-top:160px;}
+      .card { flex:0 0 70%; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav>
+    <a href="index.html" class="logo">ReyRey</a>
+
+    <div class="nav-links">
+      <a href="about.html">About Me</a>
+      <a href="journey.html">The Journey</a>
+
+      <div class="dropdown">
+        <span>Stats ▼</span>
+        <div class="dropdown-content">
+          <a href="batting.html">Batting</a>
+          <a href="keeping.html">Keeping</a>
+          <a href="match.html">Match Records</a>
+        </div>
+      </div>
+
+      <a href="trophy.html">Trophy Cabinet</a>
+      <a href="gallery.html">Gallery</a>
+    </div>
+
+    <div class="social-icons">
+      <a href="mailto:your-email@gmail.com"><img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" alt="Gmail"></a>
+      <a href="https://discord.com"><img src="https://cdn-icons-png.flaticon.com/512/2111/2111370.png" alt="Discord"></a>
+      <a href="https://instagram.com"><img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" alt="Instagram"></a>
+    </div>
+  </nav>
+
+  <!-- MAIN CONTENT -->
+  <main>
+    <h1>My Journey</h1>
+
+    <div class="section">
+      <h2>Early Days</h2>
+      <p>I started playing cricket at a young age, learning the basics and building my passion for the game.</p>
+      <p>Practicing with friends and family helped me develop fundamental skills that are essential to my performance today.</p>
+    </div>
+
+    <div class="section">
+      <h2>Milestones</h2>
+      <div class="horizontal-scroll">
+        <div class="card">
+          <h3>First Match</h3>
+          <p>Scored 20 runs in my very first match.</p>
+        </div>
+        <div class="card">
+          <h3>Team Selection</h3>
+          <p>Got selected for the school team after consistent performance.</p>
+        </div>
+        <div class="card">
+          <h3>Best Batting</h3>
+          <p>Achieved highest score of the season.</p>
+        </div>
+        <div class="card">
+          <h3>Trophy Won</h3>
+          <p>Won the regional championship trophy.</p>
+        </div>
+        <div class="card">
+          <h3>Training Camp</h3>
+          <p>Attended intensive cricket training camp over summer.</p>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+</body>
+</html>
