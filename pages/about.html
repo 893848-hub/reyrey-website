@@ -4,156 +4,74 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>About Me - ReyRey</title>
-
-  <!-- Google Font for cursive logo -->
   <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
 
   <style>
-    /* Basic reset */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: Arial, sans-serif;
-      line-height: 1.6;
-      color: #333;
-      background-color: #f5f5f5;
-    }
-
-    nav {
-      background: linear-gradient(90deg, #66ccff, #023e8a);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      padding: 10px 20px;
-      position: fixed;
-      width: 100%;
-      top: 0;
-      z-index: 100;
-    }
-
-    .logo {
-      color: white;
-      font-family: 'Pacifico', cursive;
-      font-size: 1.8em;
-      font-weight: bold;
-      text-decoration: none;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
-
-    .nav-links a, .dropdown > span {
-      color: white;
-      text-decoration: none;
-      padding: 10px 15px;
-      display: block;
-      position: relative;
-      white-space: nowrap;
-    }
-
-    .nav-links a:hover, .dropdown:hover > span {
-      background-color: rgba(0,0,0,0.2);
-      border-radius: 5px;
-    }
-
-    .dropdown { position: relative; }
-    .dropdown > span { cursor: pointer; display: block; }
-    .dropdown-content {
-      display: none;
-      position: absolute;
-      background-color: #023e8a;
-      min-width: 150px;
-      top: 100%;
-      left: 0;
-      z-index: 1;
-      border-radius: 5px;
-      overflow: hidden;
-    }
-    .dropdown-content a { padding: 10px 15px; color: white; }
-    .dropdown:hover .dropdown-content { display: block; }
-
-    .social-icons { display: flex; gap: 15px; flex-wrap: wrap; margin-top: 5px; }
-    .social-icons a img { width: 24px; height: 24px; }
-
-    main {
-      padding: 120px 20px 40px 20px; /* top padding for navbar */
-      max-width: 1000px;
-      margin: 0 auto;
-    }
-
-    section {
-      background-color: white;
-      padding: 40px;
-      border-radius: 15px;
-      box-shadow: 0px 2px 10px rgba(0,0,0,0.2);
-    }
-
-    h1 { font-size: 2.5em; margin-bottom: 20px; color: #0077b6; }
-    p { font-size: 1.2em; margin-bottom: 15px; }
-
-    @media (max-width: 768px) {
-      nav { flex-direction: column; align-items: flex-start; }
-      .nav-links { flex-direction: column; width: 100%; margin-top: 10px; }
-      .nav-links a, .dropdown > span { width: 100%; box-sizing: border-box; }
-      .dropdown-content { position: relative; top:0; left:0; width:100%; }
-      .social-icons { margin-top: 10px; }
-      main { padding: 140px 20px 40px 20px; }
-      h1 { font-size: 2em; }
-      p { font-size: 1em; }
+    /* Same styles as homepage */
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { font-family: Arial, sans-serif; line-height:1.6; color:#333; background-color:#f5f5f5; }
+    nav { background: linear-gradient(90deg, #66ccff, #023e8a); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; padding:10px 20px; position:fixed; width:100%; top:0; z-index:100; }
+    .logo { color:white; font-family:'Pacifico',cursive; font-size:1.8em; font-weight:bold; text-decoration:none; }
+    .nav-links { display:flex; gap:20px; flex-wrap:wrap; }
+    .nav-links a, .dropdown>span { color:white; text-decoration:none; padding:10px 15px; display:block; position:relative; white-space:nowrap; }
+    .nav-links a:hover, .dropdown:hover>span { background-color: rgba(0,0,0,0.2); border-radius:5px; }
+    .dropdown { position:relative; }
+    .dropdown>span { cursor:pointer; display:block; }
+    .dropdown-content { display:none; position:absolute; background-color:#023e8a; min-width:150px; top:100%; left:0; z-index:1; border-radius:5px; overflow:hidden; }
+    .dropdown-content a { padding:10px 15px; color:white; }
+    .dropdown:hover .dropdown-content { display:block; }
+    .social-icons { display:flex; gap:15px; flex-wrap:wrap; margin-top:5px; }
+    .social-icons a img { width:24px; height:24px; }
+    main { padding:140px 20px 40px 20px; max-width:1000px; margin:0 auto; }
+    section { background-color:white; padding:40px; border-radius:15px; box-shadow:0px 2px 10px rgba(0,0,0,0.2); }
+    h1 { font-size:2.5em; margin-bottom:20px; color:#0077b6; }
+    p { font-size:1.2em; margin-bottom:15px; }
+    @media(max-width:768px){
+      nav{flex-direction:column; align-items:flex-start;}
+      .nav-links{flex-direction:column;width:100%; margin-top:10px;}
+      .nav-links a, .dropdown>span{width:100%;}
+      .dropdown-content{position:relative; top:0; left:0; width:100%;}
+      .social-icons{margin-top:10px;}
+      main{padding:160px 20px 40px 20px;}
+      h1{font-size:2em;}
+      p{font-size:1em;}
     }
   </style>
 </head>
 <body>
 
-  <nav>
-    <a href="index.html" class="logo">ReyRey</a>
-
-    <div class="nav-links">
-      <a href="about.html">About Me</a>
-      <a href="journey.html">The Journey</a>
-
-      <div class="dropdown">
-        <span>Stats ▼</span>
-        <div class="dropdown-content">
-          <a href="batting.html">Batting</a>
-          <a href="keeping.html">Keeping</a>
-          <a href="match.html">Match Records</a>
-        </div>
+<nav>
+  <a href="index.html" class="logo">ReyRey</a>
+  <div class="nav-links">
+    <a href="about.html">About Me</a>
+    <a href="journey.html">The Journey</a>
+    <div class="dropdown">
+      <span>Stats ▼</span>
+      <div class="dropdown-content">
+        <a href="batting.html">Batting</a>
+        <a href="keeping.html">Keeping</a>
+        <a href="match.html">Match Records</a>
       </div>
-
-      <a href="trophy.html">Trophy Cabinet</a>
-      <a href="gallery.html">Gallery</a>
     </div>
+    <a href="trophy.html">Trophy Cabinet</a>
+    <a href="gallery.html">Gallery</a>
+  </div>
+  <div class="social-icons">
+    <a href="mailto:your-email@gmail.com" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" alt="Gmail"></a>
+    <a href="https://discord.com/" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/2111/2111370.png" alt="Discord"></a>
+    <a href="https://www.instagram.com/" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" alt="Instagram"></a>
+  </div>
+</nav>
 
-    <div class="social-icons">
-      <a href="mailto:your-email@gmail.com" target="_blank">
-        <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" alt="Gmail">
-      </a>
-      <a href="https://discord.com/" target="_blank">
-        <img src="https://cdn-icons-png.flaticon.com/512/2111/2111370.png" alt="Discord">
-      </a>
-      <a href="https://www.instagram.com/" target="_blank">
-        <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" alt="Instagram">
-      </a>
-    </div>
-  </nav>
-
-  <main>
-    <section>
-      <h1>About Me</h1>
-      <p>Hello! My name is Rey, and I’m passionate about cricket. I enjoy playing, practicing, and learning every aspect of the game.</p>
-      <p>In this section, you can learn more about my journey, my achievements, and the things I love about cricket and sports in general.</p>
-      <p>I also love connecting with friends and teammates, improving my skills, and celebrating every small victory on and off the field.</p>
-    </section>
-  </main>
+<main>
+  <section>
+    <h1>About Me</h1>
+    <p>Hello! My name is Rey, and I’m passionate about cricket. I enjoy playing, practicing, and learning every aspect of the game.</p>
+    <p>In this section, you can learn more about my journey, my achievements, and the things I love about cricket and sports in general.</p>
+    <p>I also love connecting with friends and teammates, improving my skills, and celebrating every small victory on and off the field.</p>
+  </section>
+</main>
 
 </body>
 </html>
+
