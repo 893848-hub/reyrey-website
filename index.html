@@ -24,12 +24,16 @@
     }
 
     nav {
-      /* Gradient navbar */
-      background: linear-gradient(90deg, #023e8a, #0077b6);
+      background: linear-gradient(90deg, #66ccff, #023e8a);
       display: flex;
       justify-content: space-between;
       align-items: center;
+      flex-wrap: wrap;
       padding: 10px 20px;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 100;
     }
 
     /* Logo on the left - cursive */
@@ -45,6 +49,7 @@
     .nav-links {
       display: flex;
       gap: 20px;
+      flex-wrap: wrap;
     }
 
     .nav-links a, .dropdown > span {
@@ -53,6 +58,7 @@
       padding: 10px 15px;
       display: block;
       position: relative;
+      white-space: nowrap;
     }
 
     .nav-links a:hover, .dropdown:hover > span {
@@ -96,6 +102,8 @@
     .social-icons {
       display: flex;
       gap: 15px;
+      flex-wrap: wrap;
+      margin-top: 5px;
     }
 
     .social-icons a img {
@@ -103,37 +111,83 @@
       height: 24px;
     }
 
+    /* Main section with background image */
     main {
-      padding: 40px 20px;
+      padding: 200px 20px 40px 20px; /* top padding for fixed navbar */
       max-width: 1000px;
       margin: 0 auto;
+      background-image: url('your-image.jpg'); /* REPLACE with your image file */
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      min-height: 80vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+      text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
     }
 
     section {
-      background-color: white;
-      padding: 20px;
-      margin-bottom: 20px;
-      border-radius: 10px;
-      box-shadow: 0px 2px 5px rgba(0,0,0,0.1);
+      background-color: rgba(0, 0, 0, 0.4); /* semi-transparent overlay */
+      padding: 40px;
+      border-radius: 15px;
+      box-shadow: 0px 2px 10px rgba(0,0,0,0.5);
     }
 
     h1 {
-      color: #0077b6;
-      margin-bottom: 15px;
+      font-size: 2.5em;
+      margin-bottom: 20px;
     }
 
     p {
-      font-size: 1.1em;
+      font-size: 1.2em;
     }
 
+    /* Responsive styles */
+    @media (max-width: 768px) {
+      nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .nav-links {
+        flex-direction: column;
+        width: 100%;
+        margin-top: 10px;
+      }
+
+      .nav-links a, .dropdown > span {
+        width: 100%;
+        box-sizing: border-box;
+      }
+
+      .dropdown-content {
+        position: relative;
+        top: 0;
+        left: 0;
+        width: 100%;
+      }
+
+      .social-icons {
+        margin-top: 10px;
+      }
+
+      main {
+        padding: 180px 20px 40px 20px;
+      }
+
+      h1 {
+        font-size: 2em;
+      }
+
+      p {
+        font-size: 1em;
+      }
+    }
   </style>
 </head>
-  main {
-    background-image: url('homescreen.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-}
 <body>
 
   <nav>
@@ -181,3 +235,4 @@
 
 </body>
 </html>
+
