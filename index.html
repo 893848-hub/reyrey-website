@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ReyRey - Home</title>
+
+  <!-- Google Font for cursive logo -->
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+
+  <style>
+    /* Basic reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    nav {
+      /* Light blue to dark blue gradient */
+      background: linear-gradient(90deg, #66ccff, #023e8a);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+    }
+
+    /* Logo on the left - cursive */
+    .logo {
+      color: white;
+      font-weight: bold;
+      font-size: 1.8em;
+      text-decoration: none;
+      font-family: 'Pacifico', cursive;
+    }
+
+    /* Nav links in the middle */
+    .nav-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .nav-links a, .dropdown > span {
+      color: white;
+      text-decoration: none;
+      padding: 10px 15px;
+      display: block;
+      position: relative;
+    }
+
+    .nav-links a:hover, .dropdown:hover > span {
+      background-color: rgba(0, 0, 0, 0.2);
+      border-radius: 5px;
+    }
+
+    /* Dropdown menu for Stats */
+    .dropdown {
+      position: relative;
+    }
+
+    .dropdown > span {
+      cursor: pointer;
+      display: block;
+      padding: 10px 15px;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #023e8a;
+      min-width: 150px;
+      top: 100%;
+      left: 0;
+      z-index: 1;
+      border-radius: 5px;
+      overflow: hidden;
+    }
+
+    .dropdown-content a {
+      padding: 10px 15px;
+      color: white;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    /* Social icons on the right */
+    .social-icons {
+      display: flex;
+      gap: 15px;
+    }
+
+    .social-icons a img {
+      width: 24px;
+      height: 24px;
+    }
+
+    main {
+      padding: 40px 20px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    section {
+      background-color: white;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 10px;
+      box-shadow: 0px 2px 5px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+      color: #0077b6;
+      margin-bottom: 15px;
+    }
+
+    p {
+      font-size: 1.1em;
+    }
+
+  </style>
+</head>
+<body>
+
+  <nav>
+    <!-- Left: Logo -->
+    <a href="index.html" class="logo">ReyRey</a>
+
+    <!-- Middle: Navigation Links -->
+    <div class="nav-links">
+      <a href="about.html">About Me</a>
+      <a href="journey.html">The Journey</a>
+
+      <div class="dropdown">
+        <span>Stats ▼</span>
+        <div class="dropdown-content">
+          <a href="batting.html">Batting</a>
+          <a href="keeping.html">Keeping</a>
+          <a href="match.html">Match Records</a>
+        </div>
+      </div>
+
+      <a href="trophy.html">Trophy Cabinet</a>
+      <a href="gallery.html">Gallery</a>
+    </div>
+
+    <!-- Right: Social Media Icons -->
+    <div class="social-icons">
+      <a href="mailto:your-email@gmail.com" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" alt="Gmail">
+      </a>
+      <a href="https://discord.com/" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/512/2111/2111370.png" alt="Discord">
+      </a>
+      <a href="https://www.instagram.com/" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" alt="Instagram">
+      </a>
+    </div>
+  </nav>
+
+  <main>
+    <section>
+      <h1>Welcome to ReyRey’s Cricket World</h1>
+      <p>This is your homepage. Click on the navbar links to explore each section on separate pages.</p>
+    </section>
+  </main>
+
+</body>
+</html>
