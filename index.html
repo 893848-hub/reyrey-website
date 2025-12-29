@@ -2,94 +2,154 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Your Page Title</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ReyRey - My Cricket Stats</title>
+  <style>
+    /* Basic reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    header {
+      background-color: #0077b6;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    nav {
+      background-color: #023e8a;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    nav a, nav .dropdown {
+      color: white;
+      padding: 15px 20px;
+      text-decoration: none;
+      display: block;
+      position: relative;
+    }
+
+    nav a:hover, nav .dropdown:hover {
+      background-color: #03045e;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #023e8a;
+      min-width: 150px;
+      top: 100%;
+      left: 0;
+      z-index: 1;
+    }
+
+    .dropdown-content a {
+      padding: 10px 15px;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    main {
+      padding: 20px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    section {
+      background-color: white;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 10px;
+      box-shadow: 0px 2px 5px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      margin-bottom: 10px;
+      color: #0077b6;
+    }
+
+  </style>
 </head>
 <body>
-  <!-- Your content here -->
+
+  <header>
+    <h1>ReyRey</h1>
+    <p>My Cricket Journey & Stats</p>
+  </header>
+
+  <nav>
+    <a href="#about">About Me</a>
+    <a href="#journey">The Journey</a>
+    <a href="#stats">Stats</a>
+    <a href="#trophy">Trophy Cabinet</a>
+    <a href="#gallery">Gallery</a>
+
+    <div class="dropdown">
+      Records ▼
+      <div class="dropdown-content">
+        <a href="#batting">Batting</a>
+        <a href="#keeping">Keeping</a>
+        <a href="#match">Match Records</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <section id="about">
+      <h2>About Me</h2>
+      <p>Write a little introduction about yourself here.</p>
+    </section>
+
+    <section id="journey">
+      <h2>The Journey</h2>
+      <p>Describe your cricket journey, training, and achievements.</p>
+    </section>
+
+    <section id="stats">
+      <h2>Stats</h2>
+      <p>Include your cricket stats, runs, catches, wickets, etc.</p>
+    </section>
+
+    <section id="trophy">
+      <h2>Trophy Cabinet</h2>
+      <p>Show off your trophies, medals, or awards.</p>
+    </section>
+
+    <section id="gallery">
+      <h2>Gallery</h2>
+      <p>Images or videos from matches and events.</p>
+    </section>
+
+    <section id="batting">
+      <h2>Batting Records</h2>
+      <p>Details about your batting achievements.</p>
+    </section>
+
+    <section id="keeping">
+      <h2>Keeping Records</h2>
+      <p>Details about your wicketkeeping achievements.</p>
+    </section>
+
+    <section id="match">
+      <h2>Match Records</h2>
+      <p>Overall match records and highlights.</p>
+    </section>
+  </main>
+
 </body>
 </html>
 
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: #f4f4f4;
-}
-
-/* NAVBAR */
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: #111;
-  padding: 12px 20px;
-}
-
-.logo {
-  color: white;
-  font-size: 20px;
-  font-weight: bold;
-}
-
-.nav-links {
-  list-style: none;
-  display: flex;
-  gap: 20px;
-}
-
-.nav-links li {
-  position: relative;
-}
-
-.nav-links a {
-  color: white;
-  text-decoration: none;
-}
-
-/* DROPDOWN */
-.dropdown-menu {
-  display: none;
-  position: absolute;
-  top: 30px;
-  background: #222;
-  list-style: none;
-  padding: 10px;
-}
-
-.dropdown-menu li {
-  padding: 5px 0;
-}
-
-.dropdown:hover .dropdown-menu {
-  display: block;
-}
-
-/* SOCIALS */
-.socials a {
-  color: white;
-  margin-left: 10px;
-  text-decoration: none;
-}
-
-/* HERO */
-.hero {
-  padding: 60px;
-  text-align: center;
-  background: #ddd;
-}
-
-/* CONTENT */
-.content {
-  padding: 30px;
-}
-
-section {
-  margin-bottom: 30px;
-}
-
-/* FOOTER */
-.footer {
-  text-align: center;
-  padding: 15px;
-  background: #111;
-  color: white;
-}
