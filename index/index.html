@@ -9,7 +9,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
 
   <style>
-    /* Basic reset */
+    /* Reset */
     * {
       margin: 0;
       padding: 0;
@@ -18,9 +18,9 @@
 
     body {
       font-family: Arial, sans-serif;
-      background-color: #f5f5f5;
-      color: #333;
       line-height: 1.6;
+      color: #333;
+      background-color: #f5f5f5;
     }
 
     nav {
@@ -36,16 +36,16 @@
       z-index: 100;
     }
 
-    /* Logo on the left - cursive */
+    /* Logo */
     .logo {
       color: white;
-      font-weight: bold;
-      font-size: 1.8em;
-      text-decoration: none;
       font-family: 'Pacifico', cursive;
+      font-size: 1.8em;
+      font-weight: bold;
+      text-decoration: none;
     }
 
-    /* Nav links in the middle */
+    /* Nav links */
     .nav-links {
       display: flex;
       gap: 20px;
@@ -62,21 +62,13 @@
     }
 
     .nav-links a:hover, .dropdown:hover > span {
-      background-color: rgba(0, 0, 0, 0.2);
+      background-color: rgba(0,0,0,0.2);
       border-radius: 5px;
     }
 
-    /* Dropdown menu for Stats */
-    .dropdown {
-      position: relative;
-    }
-
-    .dropdown > span {
-      cursor: pointer;
-      display: block;
-      padding: 10px 15px;
-    }
-
+    /* Dropdown */
+    .dropdown { position: relative; }
+    .dropdown > span { cursor: pointer; display: block; }
     .dropdown-content {
       display: none;
       position: absolute;
@@ -88,35 +80,19 @@
       border-radius: 5px;
       overflow: hidden;
     }
+    .dropdown-content a { padding: 10px 15px; color: white; }
+    .dropdown:hover .dropdown-content { display: block; }
 
-    .dropdown-content a {
-      padding: 10px 15px;
-      color: white;
-    }
+    /* Social icons */
+    .social-icons { display: flex; gap: 15px; flex-wrap: wrap; margin-top: 5px; }
+    .social-icons a img { width: 24px; height: 24px; }
 
-    .dropdown:hover .dropdown-content {
-      display: block;
-    }
-
-    /* Social icons on the right */
-    .social-icons {
-      display: flex;
-      gap: 15px;
-      flex-wrap: wrap;
-      margin-top: 5px;
-    }
-
-    .social-icons a img {
-      width: 24px;
-      height: 24px;
-    }
-
-    /* Main section with background image */
+    /* Main with background image */
     main {
-      padding: 200px 20px 40px 20px; /* top padding for fixed navbar */
+      padding: 200px 20px 40px 20px; /* for navbar */
       max-width: 1000px;
       margin: 0 auto;
-      background-image: url('your-image.jpg'); /* REPLACE with your image file */
+      background-image: url('images/homescreen.jpg'); /* YOUR IMAGE */
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
@@ -130,71 +106,33 @@
     }
 
     section {
-      background-color: rgba(0, 0, 0, 0.4); /* semi-transparent overlay */
+      background-color: rgba(0,0,0,0.4);
       padding: 40px;
       border-radius: 15px;
       box-shadow: 0px 2px 10px rgba(0,0,0,0.5);
     }
 
-    h1 {
-      font-size: 2.5em;
-      margin-bottom: 20px;
-    }
+    h1 { font-size: 2.5em; margin-bottom: 20px; }
+    p { font-size: 1.2em; }
 
-    p {
-      font-size: 1.2em;
-    }
-
-    /* Responsive styles */
+    /* Responsive */
     @media (max-width: 768px) {
-      nav {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      .nav-links {
-        flex-direction: column;
-        width: 100%;
-        margin-top: 10px;
-      }
-
-      .nav-links a, .dropdown > span {
-        width: 100%;
-        box-sizing: border-box;
-      }
-
-      .dropdown-content {
-        position: relative;
-        top: 0;
-        left: 0;
-        width: 100%;
-      }
-
-      .social-icons {
-        margin-top: 10px;
-      }
-
-      main {
-        padding: 180px 20px 40px 20px;
-      }
-
-      h1 {
-        font-size: 2em;
-      }
-
-      p {
-        font-size: 1em;
-      }
+      nav { flex-direction: column; align-items: flex-start; }
+      .nav-links { flex-direction: column; width: 100%; margin-top: 10px; }
+      .nav-links a, .dropdown > span { width: 100%; box-sizing: border-box; }
+      .dropdown-content { position: relative; top:0; left:0; width:100%; }
+      .social-icons { margin-top: 10px; }
+      main { padding: 180px 20px 40px 20px; }
+      h1 { font-size: 2em; }
+      p { font-size: 1em; }
     }
   </style>
 </head>
 <body>
 
   <nav>
-    <!-- Left: Logo -->
     <a href="index.html" class="logo">ReyRey</a>
 
-    <!-- Middle: Navigation Links -->
     <div class="nav-links">
       <a href="about.html">About Me</a>
       <a href="journey.html">The Journey</a>
@@ -212,7 +150,6 @@
       <a href="gallery.html">Gallery</a>
     </div>
 
-    <!-- Right: Social Media Icons -->
     <div class="social-icons">
       <a href="mailto:your-email@gmail.com" target="_blank">
         <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" alt="Gmail">
@@ -235,4 +172,5 @@
 
 </body>
 </html>
+
 
