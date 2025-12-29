@@ -3,7 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ReyRey - My Cricket Stats</title>
+  <title>ReyRey - Home</title>
+
+  <!-- Google Font for cursive logo -->
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+
   <style>
     /* Basic reset */
     * {
@@ -19,30 +23,51 @@
       line-height: 1.6;
     }
 
-    header {
-      background-color: #0077b6;
-      color: white;
-      padding: 20px;
-      text-align: center;
-    }
-
     nav {
       background-color: #023e8a;
       display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
     }
 
-    nav a, nav .dropdown {
+    /* Logo on the left - cursive */
+    .logo {
       color: white;
-      padding: 15px 20px;
+      font-weight: bold;
+      font-size: 1.8em;
       text-decoration: none;
+      font-family: 'Pacifico', cursive;
+    }
+
+    /* Nav links in the middle */
+    .nav-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .nav-links a, .dropdown > span {
+      color: white;
+      text-decoration: none;
+      padding: 10px 15px;
       display: block;
       position: relative;
     }
 
-    nav a:hover, nav .dropdown:hover {
+    .nav-links a:hover, .dropdown:hover > span {
       background-color: #03045e;
+      border-radius: 5px;
+    }
+
+    /* Dropdown menu for Stats */
+    .dropdown {
+      position: relative;
+    }
+
+    .dropdown > span {
+      cursor: pointer;
+      display: block;
+      padding: 10px 15px;
     }
 
     .dropdown-content {
@@ -53,18 +78,32 @@
       top: 100%;
       left: 0;
       z-index: 1;
+      border-radius: 5px;
+      overflow: hidden;
     }
 
     .dropdown-content a {
       padding: 10px 15px;
+      color: white;
     }
 
     .dropdown:hover .dropdown-content {
       display: block;
     }
 
+    /* Social icons on the right */
+    .social-icons {
+      display: flex;
+      gap: 15px;
+    }
+
+    .social-icons a img {
+      width: 24px;
+      height: 24px;
+    }
+
     main {
-      padding: 20px;
+      padding: 40px 20px;
       max-width: 1000px;
       margin: 0 auto;
     }
@@ -77,79 +116,61 @@
       box-shadow: 0px 2px 5px rgba(0,0,0,0.1);
     }
 
-    h2 {
-      margin-bottom: 10px;
+    h1 {
       color: #0077b6;
+      margin-bottom: 15px;
+    }
+
+    p {
+      font-size: 1.1em;
     }
 
   </style>
 </head>
 <body>
 
-  <header>
-    <h1>ReyRey</h1>
-    <p>My Cricket Journey & Stats</p>
-  </header>
-
   <nav>
-    <a href="#about">About Me</a>
-    <a href="#journey">The Journey</a>
-    <a href="#stats">Stats</a>
-    <a href="#trophy">Trophy Cabinet</a>
-    <a href="#gallery">Gallery</a>
+    <!-- Left: Logo -->
+    <a href="index.html" class="logo">ReyRey</a>
 
-    <div class="dropdown">
-      Records ▼
-      <div class="dropdown-content">
-        <a href="#batting">Batting</a>
-        <a href="#keeping">Keeping</a>
-        <a href="#match">Match Records</a>
+    <!-- Middle: Navigation Links -->
+    <div class="nav-links">
+      <a href="about.html">About Me</a>
+      <a href="journey.html">The Journey</a>
+
+      <div class="dropdown">
+        <span>Stats ▼</span>
+        <div class="dropdown-content">
+          <a href="batting.html">Batting</a>
+          <a href="keeping.html">Keeping</a>
+          <a href="match.html">Match Records</a>
+        </div>
       </div>
+
+      <a href="trophy.html">Trophy Cabinet</a>
+      <a href="gallery.html">Gallery</a>
+    </div>
+
+    <!-- Right: Social Media Icons -->
+    <div class="social-icons">
+      <a href="mailto:your-email@gmail.com" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" alt="Gmail">
+      </a>
+      <a href="https://discord.com/" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/512/2111/2111370.png" alt="Discord">
+      </a>
+      <a href="https://www.instagram.com/" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" alt="Instagram">
+      </a>
     </div>
   </nav>
 
   <main>
-    <section id="about">
-      <h2>About Me</h2>
-      <p>Write a little introduction about yourself here.</p>
-    </section>
-
-    <section id="journey">
-      <h2>The Journey</h2>
-      <p>Describe your cricket journey, training, and achievements.</p>
-    </section>
-
-    <section id="stats">
-      <h2>Stats</h2>
-      <p>Include your cricket stats, runs, catches, wickets, etc.</p>
-    </section>
-
-    <section id="trophy">
-      <h2>Trophy Cabinet</h2>
-      <p>Show off your trophies, medals, or awards.</p>
-    </section>
-
-    <section id="gallery">
-      <h2>Gallery</h2>
-      <p>Images or videos from matches and events.</p>
-    </section>
-
-    <section id="batting">
-      <h2>Batting Records</h2>
-      <p>Details about your batting achievements.</p>
-    </section>
-
-    <section id="keeping">
-      <h2>Keeping Records</h2>
-      <p>Details about your wicketkeeping achievements.</p>
-    </section>
-
-    <section id="match">
-      <h2>Match Records</h2>
-      <p>Overall match records and highlights.</p>
+    <section>
+      <h1>Welcome to ReyRey’s Cricket World</h1>
+      <p>This is your homepage. Click on the navbar links to explore each section on separate pages.</p>
     </section>
   </main>
 
 </body>
 </html>
-
