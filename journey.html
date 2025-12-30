@@ -1,127 +1,137 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Journey - ReyRey</title>
-<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
-<style>
-  * { margin:0; padding:0; box-sizing:border-box; }
-  html, body { width:100%; height:100%; }
-  body { font-family: Arial, sans-serif; background:#023e8a; color:white; overflow-x:auto; }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Journey Page</title>
+  <style>
+    /* Reset some defaults */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
 
-  /* NAVBAR */
-  nav {
-    height:60px;
-    background: linear-gradient(90deg, #66ccff, #023e8a);
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:0 20px;
-  }
-  .logo { font-family:'Pacifico', cursive; font-size:1.6em; color:white; text-decoration:none; }
-  .nav-links a { color:white; text-decoration:none; margin-right:15px; }
+    /* Fixed Navbar */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: #333;
+      color: #fff;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      padding: 1rem 0;
+      z-index: 1000;
+    }
 
-  /* ROADMAP FULL PAGE */
-  .roadmap { height: calc(100vh - 60px); padding:40px 30px; overflow-x:auto; overflow-y:hidden; position:relative; }
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 0.5rem 1rem;
+      transition: background 0.3s;
+    }
 
-  .roadmap-header { max-width:600px; margin-bottom:40px; }
-  .roadmap-header h1 { font-size:2.4em; color:#66ccff; margin-bottom:10px; }
-  .roadmap-header p { font-size:1.2em; line-height:1.5; }
+    nav a:hover {
+      background-color: #555;
+      border-radius: 5px;
+    }
 
-  /* TIMELINE */
-  .timeline {
-    position:relative;
-    min-width:2400px;
-    height:400px;
-    display:flex;
-    align-items:center;
-  }
+    /* Page padding to avoid navbar overlap */
+    body {
+      padding-top: 70px;
+      background-color: #f0f0f0;
+    }
 
-  .timeline-line {
-    position:absolute;
-    top:50%;
-    left:0;
-    width:100%;
-    height:4px;
-    background:#66ccff;
-    transform: translateY(-50%);
-  }
+    /* Journey Section */
+    .journey {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 60px;
+      padding: 50px 20px;
+      background-color: #fff;
+      border-radius: 15px;
+      max-width: 900px;
+      margin: 50px auto;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
 
-  /* Milestones */
-  .milestones {
-    display:flex;
-    position:relative;
-    gap:120px;
-  }
+    .journey-box {
+      width: 300px;
+      padding: 20px;
+      background-color: #4CAF50;
+      color: white;
+      border-radius: 10px;
+      text-align: center;
+      position: relative;
+      transition: transform 0.3s;
+    }
 
-  .milestone {
-    width:260px;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    position:relative;
-  }
+    .journey-box:hover {
+      transform: translateY(-10px);
+    }
 
-  .milestone .dot {
-    width:18px; height:18px;
-    background:#66ccff;
-    border-radius:50%;
-    margin-bottom:12px;
-  }
+    /* Curved effect: top, middle, bottom stagger */
+    .journey-box:nth-child(1) {
+      margin-top: -20px;
+    }
+    .journey-box:nth-child(2) {
+      margin-top: 20px;
+      background-color: #2196F3;
+    }
+    .journey-box:nth-child(3) {
+      margin-top: -10px;
+      background-color: #FF5722;
+    }
 
-  .milestone .card {
-    background:#66ccff; color:#023e8a;
-    padding:20px; border-radius:16px;
-    width:100%; height:200px;
-    text-align:center;
-    box-shadow:0 6px 12px rgba(0,0,0,0.3);
-    display:flex; flex-direction:column; justify-content:center;
-  }
+    /* Optional connecting line */
+    .line {
+      width: 4px;
+      background-color: #333;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: -1;
+    }
 
-  /* Zig-zag positions */
-  .milestone:nth-child(3n+1) { top:-120px; }  /* top */
-  .milestone:nth-child(3n+2) { top:120px; }   /* bottom */
-  .milestone:nth-child(3n+3) { top:0px; }     /* middle */
+    .journey-container {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
 
-  @media (max-width:768px) {
-    .timeline { min-width:1600px; height:350px; }
-    .milestone { width:75vw; }
-    .milestone:nth-child(3n+1) { top:-100px; }
-    .milestone:nth-child(3n+2) { top:100px; }
-    .milestone:nth-child(3n+3) { top:0px; }
-  }
-</style>
+  </style>
 </head>
 <body>
 
-<nav>
-  <a href="index.html" class="logo">ReyRey</a>
-  <div class="nav-links">
-    <a href="about.html">About Me</a>
-    <a href="journey.html">The Journey</a>
-  </div>
-</nav>
+  <!-- Fixed Navbar -->
+  <nav>
+    <a href="#about">About Me</a>
+    <a href="#journey">The Journey</a>
+    <a href="#stats">Stats</a>
+    <a href="#trophy">Trophy Cabinet</a>
+    <a href="#gallery">Gallery</a>
+  </nav>
 
-<section class="roadmap">
-  <div class="roadmap-header">
-    <h1>My Journey</h1>
-    <p>This roadmap shows my cricket journey with milestones in a zig-zag layout.</p>
-  </div>
+  <!-- Journey Section -->
+  <section id="journey" class="journey-container">
+    <!-- Optional vertical line -->
+    <div class="line" style="height: 400px; top: 50px;"></div>
 
-  <div class="timeline">
-    <div class="timeline-line"></div>
-    <div class="milestones">
-      <div class="milestone"><div class="dot"></div><div class="card"><h3>First Match</h3><p>Played my first competitive game.</p></div></div>
-      <div class="milestone"><div class="dot"></div><div class="card"><h3>School Team</h3><p>Selected for the school team.</p></div></div>
-      <div class="milestone"><div class="dot"></div><div class="card"><h3>Top Scorer</h3><p>Highest run scorer.</p></div></div>
-      <div class="milestone"><div class="dot"></div><div class="card"><h3>Captaincy</h3><p>Appointed team captain.</p></div></div>
-      <div class="milestone"><div class="dot"></div><div class="card"><h3>Champions</h3><p>Won a major tournament.</p></div></div>
-      <div class="milestone"><div class="dot"></div><div class="card"><h3>Future Goals</h3><p>Next level ambitions.</p></div></div>
+    <div class="journey">
+      <div class="journey-box">Started Playing Cricket</div>
+      <div class="journey-box">Joined Club Team</div>
+      <div class="journey-box">Won First Tournament</div>
     </div>
-  </div>
-</section>
+  </section>
 
 </body>
 </html>
+
 
