@@ -22,74 +22,54 @@
   .logo { font-family:'Pacifico', cursive; font-size:1.6em; color:white; text-decoration:none; }
   .nav-links a { color:white; text-decoration:none; margin-right:15px; }
 
-  /* ROADMAP FULL PAGE */
-  .roadmap { height: calc(100vh - 60px); padding:40px 30px; overflow-x:auto; overflow-y:hidden; position:relative; }
+  /* ROADMAP */
+  .roadmap { height: calc(100vh - 60px); padding:40px 30px; overflow-x:auto; position:relative; }
 
   .roadmap-header { max-width:600px; margin-bottom:40px; }
   .roadmap-header h1 { font-size:2.4em; color:#66ccff; margin-bottom:10px; }
   .roadmap-header p { font-size:1.2em; line-height:1.5; }
 
-  /* TIMELINE */
+  /* TIMELINE CONTAINER */
   .timeline {
     position:relative;
     min-width:2400px;
     height:400px;
-    display:flex;
-    align-items:center;
   }
 
-  .timeline-line {
-    position:absolute;
-    top:50%;
-    left:0;
+  svg.curve {
     width:100%;
-    height:4px;
-    background:#66ccff;
-    transform: translateY(-50%);
+    height:100%;
   }
 
   /* Milestones */
-  .milestones {
-    display:flex;
-    position:relative;
-    gap:120px;
-  }
-
+  .milestones { position:absolute; top:0; left:0; width:100%; height:100%; }
   .milestone {
+    position:absolute;
     width:260px;
     display:flex;
     flex-direction:column;
     align-items:center;
-    position:relative;
   }
 
-  .milestone .dot {
+  .dot {
     width:18px; height:18px;
     background:#66ccff;
     border-radius:50%;
     margin-bottom:12px;
   }
 
-  .milestone .card {
+  .card {
     background:#66ccff; color:#023e8a;
     padding:20px; border-radius:16px;
-    width:100%; height:200px;
+    width:100%; height:180px;
     text-align:center;
     box-shadow:0 6px 12px rgba(0,0,0,0.3);
     display:flex; flex-direction:column; justify-content:center;
   }
 
-  /* Zig-zag positions */
-  .milestone:nth-child(3n+1) { top:-120px; }  /* top */
-  .milestone:nth-child(3n+2) { top:120px; }   /* bottom */
-  .milestone:nth-child(3n+3) { top:0px; }     /* middle */
-
-  @media (max-width:768px) {
-    .timeline { min-width:1600px; height:350px; }
+  @media (max-width:768px){
+    .timeline { min-width:1600px; height:300px; }
     .milestone { width:75vw; }
-    .milestone:nth-child(3n+1) { top:-100px; }
-    .milestone:nth-child(3n+2) { top:100px; }
-    .milestone:nth-child(3n+3) { top:0px; }
   }
 </style>
 </head>
@@ -106,21 +86,49 @@
 <section class="roadmap">
   <div class="roadmap-header">
     <h1>My Journey</h1>
-    <p>This roadmap shows my cricket journey with milestones in a zig-zag layout.</p>
+    <p>Milestones follow a curved timeline. Cards alternate above/below the line.</p>
   </div>
 
   <div class="timeline">
-    <div class="timeline-line"></div>
-    <div class="milestones">
-      <div class="milestone"><div class="dot"></div><div class="card"><h3>First Match</h3><p>Played my first competitive game.</p></div></div>
-      <div class="milestone"><div class="dot"></div><div class="card"><h3>School Team</h3><p>Selected for the school team.</p></div></div>
-      <div class="milestone"><div class="dot"></div><div class="card"><h3>Top Scorer</h3><p>Highest run scorer.</p></div></div>
-      <div class="milestone"><div class="dot"></div><div class="card"><h3>Captaincy</h3><p>Appointed team captain.</p></div></div>
-      <div class="milestone"><div class="dot"></div><div class="card"><h3>Champions</h3><p>Won a major tournament.</p></div></div>
-      <div class="milestone"><div class="dot"></div><div class="card"><h3>Future Goals</h3><p>Next level ambitions.</p></div></div>
+    <!-- SVG CURVED LINE -->
+    <svg class="curve">
+      <path id="curvePath" d="M50,200 C400,50 800,350 1200,200 C1600,50 2000,350 2400,200" stroke="#66ccff" stroke-width="4" fill="transparent"/>
+    </svg>
+
+    <!-- Milestones -->
+    <div class="milestones" id="milestones">
+      <div class="milestone"><div class="dot"></div><div class="card">First Match</div></div>
+      <div class="milestone"><div class="dot"></div><div class="card">School Team</div></div>
+      <div class="milestone"><div class="dot"></div><div class="card">Top Scorer</div></div>
+      <div class="milestone"><div class="dot"></div><div class="card">Captaincy</div></div>
+      <div class="milestone"><div class="dot"></div><div class="card">Champions</div></div>
+      <div class="milestone"><div class="dot"></div><div class="card">Future Goals</div></div>
     </div>
   </div>
 </section>
+
+<script>
+  const path = document.getElementById('curvePath');
+  const milestones = document.querySelectorAll('.milestone');
+  const pathLength = path.getTotalLength();
+  const cardOffset = 100; // distance above/below line for zig-zag
+
+  milestones.forEach((milestone, i) => {
+    const point = path.getPointAtLength(i / (milestones.length - 1) * pathLength);
+    milestone.style.left = (point.x - milestone.offsetWidth/2) + "px";
+
+    // Zig-zag cards
+    const isAbove = i % 3 === 0;
+    const isMiddle = i % 3 === 2;
+    if (isAbove) {
+      milestone.style.top = (point.y - cardOffset - 18) + "px"; // dot radius
+    } else if (isMiddle) {
+      milestone.style.top = (point.y - milestone.offsetHeight/2) + "px";
+    } else {
+      milestone.style.top = (point.y + cardOffset) + "px";
+    }
+  });
+</script>
 
 </body>
 </html>
