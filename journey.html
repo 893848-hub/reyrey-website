@@ -1,266 +1,126 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The Journey - ReyRey</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Journey - ReyRey</title>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html, body { width:100%; height:100%; }
+  body { font-family: Arial, sans-serif; background:#023e8a; color:white; overflow-x:auto; }
 
-  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+  /* NAVBAR */
+  nav {
+    height:60px;
+    background: linear-gradient(90deg, #66ccff, #023e8a);
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:0 20px;
+  }
+  .logo { font-family:'Pacifico', cursive; font-size:1.6em; color:white; text-decoration:none; }
+  .nav-links a { color:white; text-decoration:none; margin-right:15px; }
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+  /* ROADMAP FULL PAGE */
+  .roadmap { height: calc(100vh - 60px); padding:40px 30px; overflow-x:auto; overflow-y:hidden; position:relative; }
 
-    html, body {
-      width: 100%;
-      height: 100%;
-    }
+  .roadmap-header { max-width:600px; margin-bottom:40px; }
+  .roadmap-header h1 { font-size:2.4em; color:#66ccff; margin-bottom:10px; }
+  .roadmap-header p { font-size:1.2em; line-height:1.5; }
 
-    body {
-      font-family: Arial, sans-serif;
-      background: #023e8a;
-      color: white;
-      overflow-x: hidden;
-    }
+  /* TIMELINE */
+  .timeline {
+    position:relative;
+    min-width:2400px;
+    height:400px;
+    display:flex;
+    align-items:center;
+  }
 
-    /* NAVBAR */
-    nav {
-      height: 60px;
-      background: linear-gradient(90deg, #66ccff, #023e8a);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 0 20px;
-    }
+  .timeline-line {
+    position:absolute;
+    top:50%;
+    left:0;
+    width:100%;
+    height:4px;
+    background:#66ccff;
+    transform: translateY(-50%);
+  }
 
-    .logo {
-      font-family: 'Pacifico', cursive;
-      font-size: 1.6em;
-      color: white;
-      text-decoration: none;
-    }
+  /* Milestones */
+  .milestones {
+    display:flex;
+    position:relative;
+    gap:120px;
+  }
 
-    .nav-links {
-      display: flex;
-      gap: 15px;
-      align-items: center;
-    }
+  .milestone {
+    width:260px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    position:relative;
+  }
 
-    .nav-links a,
-    .dropdown span {
-      color: white;
-      text-decoration: none;
-      padding: 6px 10px;
-      cursor: pointer;
-    }
+  .milestone .dot {
+    width:18px; height:18px;
+    background:#66ccff;
+    border-radius:50%;
+    margin-bottom:12px;
+  }
 
-    .dropdown {
-      position: relative;
-    }
+  .milestone .card {
+    background:#66ccff; color:#023e8a;
+    padding:20px; border-radius:16px;
+    width:100%; height:200px;
+    text-align:center;
+    box-shadow:0 6px 12px rgba(0,0,0,0.3);
+    display:flex; flex-direction:column; justify-content:center;
+  }
 
-    .dropdown-content {
-      display: none;
-      position: absolute;
-      top: 100%;
-      left: 0;
-      background: #023e8a;
-      border-radius: 6px;
-      min-width: 160px;
-      z-index: 10;
-    }
+  /* Zig-zag positions */
+  .milestone:nth-child(3n+1) { top:-120px; }  /* top */
+  .milestone:nth-child(3n+2) { top:120px; }   /* bottom */
+  .milestone:nth-child(3n+3) { top:0px; }     /* middle */
 
-    .dropdown-content a {
-      display: block;
-      padding: 10px;
-      color: white;
-      text-decoration: none;
-    }
-
-    .dropdown:hover .dropdown-content {
-      display: block;
-    }
-
-    .social-icons {
-      display: flex;
-      gap: 14px;
-    }
-
-    .social-icons img {
-      width: 20px;
-      height: 20px;
-    }
-
-    /* ROADMAP SECTION */
-    .roadmap {
-      height: calc(100vh - 60px);
-      padding: 40px 30px;
-      overflow-x: auto;
-      overflow-y: hidden;
-    }
-
-    .roadmap-header {
-      max-width: 600px;
-      margin-bottom: 40px;
-    }
-
-    .roadmap-header h1 {
-      font-size: 2.4em;
-      color: #66ccff;
-      margin-bottom: 10px;
-    }
-
-    .roadmap-header p {
-      font-size: 1.2em;
-      line-height: 1.5;
-    }
-
-    /* TIMELINE */
-    .timeline {
-      position: relative;
-      height: 260px;
-      min-width: 2400px;
-    }
-
-    .timeline::before {
-      content: "";
-      position: absolute;
-      top: 130px;
-      left: 0;
-      width: 100%;
-      height: 4px;
-      background: #66ccff;
-    }
-
-    .milestones {
-      display: flex;
-      gap: 60px;
-      height: 100%;
-      align-items: flex-start;
-    }
-
-    .milestone {
-      width: 260px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    .dot {
-      width: 18px;
-      height: 18px;
-      background: #66ccff;
-      border-radius: 50%;
-      margin-top: 121px;
-      margin-bottom: 12px;
-    }
-
-    .card {
-      background: #66ccff;
-      color: #023e8a;
-      padding: 20px;
-      border-radius: 16px;
-      width: 100%;
-      height: 200px;
-      text-align: center;
-      box-shadow: 0 6px 12px rgba(0,0,0,0.3);
-
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-
-    @media (max-width: 768px) {
-      .timeline {
-        min-width: 1600px;
-      }
-
-      .milestone {
-        width: 75vw;
-      }
-    }
-  </style>
+  @media (max-width:768px) {
+    .timeline { min-width:1600px; height:350px; }
+    .milestone { width:75vw; }
+    .milestone:nth-child(3n+1) { top:-100px; }
+    .milestone:nth-child(3n+2) { top:100px; }
+    .milestone:nth-child(3n+3) { top:0px; }
+  }
+</style>
 </head>
 <body>
 
-  <nav>
-    <a href="index.html" class="logo">ReyRey</a>
+<nav>
+  <a href="index.html" class="logo">ReyRey</a>
+  <div class="nav-links">
+    <a href="about.html">About Me</a>
+    <a href="journey.html">The Journey</a>
+  </div>
+</nav>
 
-    <div class="nav-links">
-      <a href="about.html">About Me</a>
-      <a href="journey.html">The Journey</a>
+<section class="roadmap">
+  <div class="roadmap-header">
+    <h1>My Journey</h1>
+    <p>This roadmap shows my cricket journey with milestones in a zig-zag layout.</p>
+  </div>
 
-      <div class="dropdown">
-        <span>Stats ▼</span>
-        <div class="dropdown-content">
-          <a href="batting.html">Batting</a>
-          <a href="keeping.html">Keeping</a>
-          <a href="match.html">Match Records</a>
-        </div>
-      </div>
-
-      <a href="trophy.html">Trophy Cabinet</a>
-      <a href="gallery.html">Gallery</a>
+  <div class="timeline">
+    <div class="timeline-line"></div>
+    <div class="milestones">
+      <div class="milestone"><div class="dot"></div><div class="card"><h3>First Match</h3><p>Played my first competitive game.</p></div></div>
+      <div class="milestone"><div class="dot"></div><div class="card"><h3>School Team</h3><p>Selected for the school team.</p></div></div>
+      <div class="milestone"><div class="dot"></div><div class="card"><h3>Top Scorer</h3><p>Highest run scorer.</p></div></div>
+      <div class="milestone"><div class="dot"></div><div class="card"><h3>Captaincy</h3><p>Appointed team captain.</p></div></div>
+      <div class="milestone"><div class="dot"></div><div class="card"><h3>Champions</h3><p>Won a major tournament.</p></div></div>
+      <div class="milestone"><div class="dot"></div><div class="card"><h3>Future Goals</h3><p>Next level ambitions.</p></div></div>
     </div>
-
-    <div class="social-icons">
-      <a href="mailto:your-email@gmail.com">
-        <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png">
-      </a>
-      <a href="https://discord.com">
-        <img src="https://cdn-icons-png.flaticon.com/512/2111/2111370.png">
-      </a>
-      <a href="https://instagram.com">
-        <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png">
-      </a>
-    </div>
-  </nav>
-
-  <section class="roadmap">
-    <div class="roadmap-header">
-      <h1>My Journey</h1>
-      <p>You can write anything you want here inside the roadmap.</p>
-    </div>
-
-    <div class="timeline">
-      <div class="milestones">
-
-        <div class="milestone">
-          <div class="dot"></div>
-          <div class="card"><h3>Start</h3><p>First match</p></div>
-        </div>
-
-        <div class="milestone">
-          <div class="dot"></div>
-          <div class="card"><h3>Growth</h3><p>School team</p></div>
-        </div>
-
-        <div class="milestone">
-          <div class="dot"></div>
-          <div class="card"><h3>Success</h3><p>Top scorer</p></div>
-        </div>
-
-        <div class="milestone">
-          <div class="dot"></div>
-          <div class="card"><h3>Leader</h3><p>Captaincy</p></div>
-        </div>
-
-        <div class="milestone">
-          <div class="dot"></div>
-          <div class="card"><h3>Champion</h3><p>Tournament win</p></div>
-        </div>
-
-        <div class="milestone">
-          <div class="dot"></div>
-          <div class="card"><h3>Future</h3><p>Next goals</p></div>
-        </div>
-
-      </div>
-    </div>
-  </section>
+  </div>
+</section>
 
 </body>
 </html>
-
