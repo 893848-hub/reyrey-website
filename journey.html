@@ -46,10 +46,10 @@
       max-width:900px; margin-left:auto; margin-right:auto;
     }
 
-    /* FULL-WIDTH MILESTONES TOP-ALIGNED */
+    /* FULL-WIDTH MILESTONES TOP-ALIGNED, SAME HEIGHT CARDS */
     .milestones {
       width:100vw;
-      height:50vh; /* bottom half of screen */
+      height:50vh;
       background:#023e8a;
       display:flex;
       align-items:flex-start; /* top-aligned */
@@ -67,6 +67,12 @@
       box-shadow:0 4px 8px rgba(0,0,0,0.2);
       margin-right:20px;
       text-align:center;
+
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+
+      min-height:250px; /* same height for all cards */
     }
 
     @media(max-width:768px){
@@ -116,7 +122,7 @@
       <p>Practicing with friends and family helped me develop fundamental skills that are essential to my performance today.</p>
     </div>
 
-    <!-- FULL-WIDTH MILESTONES (TOP-ALIGNED CARDS) -->
+    <!-- FULL-WIDTH MILESTONES (TOP-ALIGNED, SAME HEIGHT CARDS) -->
     <div class="milestones">
       <div class="card">
         <h3>First Match</h3>
@@ -145,6 +151,3 @@
 
 </body>
 </html>
-
-
-
