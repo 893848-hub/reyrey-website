@@ -2,129 +2,180 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Batting Stats - ReyRey</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<title>Cricket Stats</title>
 <style>
-body { margin:0; font-family: Arial, sans-serif; background:#f4f4f4; }
-nav { height:60px; background: linear-gradient(90deg, #66ccff, #023e8a); display:flex; justify-content:space-between; align-items:center; padding:0 20px; }
-.logo { font-family:'Pacifico', cursive; font-size:1.6em; color:white; text-decoration:none; }
-.nav-links a { color:white; text-decoration:none; margin-right:15px; }
+  body {
+    font-family: Arial, sans-serif;
+    padding: 80px 20px 40px;
+    background-color: #f0f0f0;
+  }
 
-main { padding:40px; }
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #333;
+    color: #fff;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 1rem 0;
+    z-index: 1000;
+  }
 
-h1 { color:#023e8a; margin-bottom:20px; }
+  nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 0.5rem 1rem;
+    white-space: nowrap;
+  }
 
-table { width:100%; border-collapse:collapse; background:white; box-shadow:0 4px 8px rgba(0,0,0,0.1); margin-bottom:40px; }
-th, td { padding:12px; border-bottom:1px solid #ddd; text-align:center; }
-th { background:#0077b6; color:white; }
+  nav a:hover {
+    background-color: #555;
+    border-radius: 5px;
+  }
 
-.chart-container { background:white; padding:20px; border-radius:16px; margin-bottom:40px; box-shadow:0 4px 8px rgba(0,0,0,0.1); }
+  .stats-container {
+    max-width: 900px;
+    margin: 0 auto;
+    background-color: #fff;
+    border-radius: 15px;
+    padding: 40px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    text-align: center;
+  }
+
+  .profile-pic {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid #333;
+    margin-bottom: 20px;
+  }
+
+  .main-stats {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+  }
+
+  .stat-box {
+    background-color: #4CAF50;
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    min-width: 100px;
+    text-align: center;
+    font-size: 1.2rem;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  th, td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: center;
+  }
+
+  th {
+    background-color: #333;
+    color: white;
+  }
+
 </style>
 </head>
 <body>
 
 <nav>
-  <a href="index.html" class="logo">ReyRey</a>
-  <div class="nav-links">
-    <a href="about.html">About</a>
-    <a href="journey.html">Journey</a>
-  </div>
+  <a href="#about">About Me</a>
+  <a href="#journey">The Journey</a>
+  <a href="#stats">Stats</a>
+  <a href="#trophy">Trophy Cabinet</a>
+  <a href="#gallery">Gallery</a>
 </nav>
 
-<main>
-  <h1>Batting Stats</h1>
+<section id="stats" class="stats-container">
+  <img src="https://via.placeholder.com/150" alt="Profile Picture" class="profile-pic">
+  
+  <div class="main-stats">
+    <div class="stat-box" id="runs">Runs: --</div>
+    <div class="stat-box" id="avg">AVG: --</div>
+    <div class="stat-box" id="sr">SR: --</div>
+    <div class="stat-box" id="fifties">50s: --</div>
+    <div class="stat-box" id="hundreds">100s: --</div>
+  </div>
 
-  <!-- Table -->
-  <table id="statsTable">
-    <thead><tr></tr></thead>
-    <tbody></tbody>
+  <h2>Detailed Stats</h2>
+  <table id="stats-table">
+    <thead>
+      <tr>
+        <th>Match</th>
+        <th>Runs</th>
+        <th>Balls</th>
+        <th>Average</th>
+        <th>Strike Rate</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Data will be populated here from Google Sheet -->
+    </tbody>
   </table>
-
-  <!-- Charts -->
-  <div class="chart-container">
-    <canvas id="runsChart" height="100"></canvas>
-  </div>
-  <div class="chart-container">
-    <canvas id="cumulativeChart" height="100"></canvas>
-  </div>
-</main>
+</section>
 
 <script>
-const sheetId = "YOUR_SHEET_ID_HERE"; // replace with your Sheet ID
-const sheetName = "Batting_Innings"; // your tab name
-const url = `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?tqx=out:json&sheet=${sheetName}`;
+  const SHEET_ID = 'YOUR_SHEET_ID';
+  const SHEET_NAME = 'Sheet1'; // change if your sheet has a different name
+  const url = `https://docs.google.com/spreadsheets/d/$1tpkXWvJbm7BDNppoMXhY8w_h4cAXdIpMZn0JnrzzipU/gviz/tq?sheet=${SHEET_NAME}`;
 
-fetch(url)
-  .then(res => res.text())
-  .then(text => {
-    const json = JSON.parse(text.substring(47).slice(0, -2));
-    const table = document.getElementById("statsTable");
-    const thead = table.querySelector("thead tr");
-    const tbody = table.querySelector("tbody");
+  fetch(url)
+    .then(res => res.text())
+    .then(data => {
+      // parse the JSON from the returned string
+      const jsonData = JSON.parse(data.match(/google\.visualization\.Query\.setResponse\((.*)\)/)[1]);
+      const rows = jsonData.table.rows;
 
-    // Build table headers
-    json.table.cols.forEach(col => {
-      const th = document.createElement("th");
-      th.textContent = col.label;
-      thead.appendChild(th);
-    });
+      const tbody = document.querySelector('#stats-table tbody');
+      let totalRuns = 0;
+      let totalBalls = 0;
+      let fifties = 0;
+      let hundreds = 0;
 
-    const runsData = [];
-    const labels = [];
-    let cumulativeRuns = [];
-    let total = 0;
+      rows.forEach(row => {
+        const match = row.c[0]?.v || '';
+        const runs = row.c[1]?.v || 0;
+        const balls = row.c[2]?.v || 0;
+        const avg = row.c[3]?.v || 0;
+        const sr = row.c[4]?.v || 0;
 
-    // Build table rows
-    json.table.rows.forEach((row, i) => {
-      const tr = document.createElement("tr");
-      row.c.forEach(cell => {
-        const td = document.createElement("td");
-        td.textContent = cell ? cell.v : "";
-        tr.appendChild(td);
+        totalRuns += runs;
+        totalBalls += balls;
+        if (runs >= 50 && runs < 100) fifties++;
+        if (runs >= 100) hundreds++;
+
+        const tr = document.createElement('tr');
+        tr.innerHTML = `<td>${match}</td><td>${runs}</td><td>${balls}</td><td>${avg}</td><td>${sr}</td>`;
+        tbody.appendChild(tr);
       });
-      tbody.appendChild(tr);
 
-      // Chart data
-      const runs = row.c[1] ? Number(row.c[1].v) : 0; // Assuming column 2 is Runs
-      runsData.push(runs);
-      labels.push(row.c[0] ? row.c[0].v : i+1); // Assuming column 1 is Innings Date
-      total += runs;
-      cumulativeRuns.push(total);
-    });
-
-    // Bar chart: Runs per match
-    new Chart(document.getElementById('runsChart'), {
-      type: 'bar',
-      data: {
-        labels: labels,
-        datasets: [{
-          label: 'Runs per match',
-          data: runsData,
-          backgroundColor: '#66ccff'
-        }]
-      },
-      options: { responsive:true, plugins:{legend:{display:false}} }
-    });
-
-    // Line chart: Cumulative runs
-    new Chart(document.getElementById('cumulativeChart'), {
-      type: 'line',
-      data: {
-        labels: labels,
-        datasets: [{
-          label: 'Cumulative Runs',
-          data: cumulativeRuns,
-          fill:false,
-          borderColor:'#023e8a',
-          tension:0.2
-        }]
-      },
-      options: { responsive:true }
-    });
-
-  }).catch(err => console.error("Error fetching sheet:", err));
+      // set main stats
+      document.getElementById('runs').textContent = `Runs: ${totalRuns}`;
+      const avgOverall = (totalBalls ? (totalRuns / rows.length).toFixed(2) : 0);
+      document.getElementById('avg').textContent = `AVG: ${avgOverall}`;
+      const srOverall = (totalBalls ? (totalRuns / totalBalls * 100).toFixed(2) : 0);
+      document.getElementById('sr').textContent = `SR: ${srOverall}`;
+      document.getElementById('fifties').textContent = `50s: ${fifties}`;
+      document.getElementById('hundreds').textContent = `100s: ${hundreds}`;
+    })
+    .catch(err => console.log('Error fetching sheet:', err));
 </script>
 
 </body>
