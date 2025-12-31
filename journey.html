@@ -1,384 +1,196 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The Journey - ReyRey</title>
-
-  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
-
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html, body {
-      width: 100%;
-      height: 100%;
-    }
-
-    body {
-      font-family: Arial, sans-serif;
-      background: #023e8a;
-      color: white;
-      overflow-x: hidden;
-    }
-
-    /* NAVBAR */
-    nav {
-      height: 60px;
-      background: linear-gradient(90deg, #66ccff, #023e8a);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 0 20px;
-    }
-
-    .logo {
-      font-family: 'Pacifico', cursive;
-      font-size: 1.6em;
-      color: white;
-      text-decoration: none;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 15px;
-      align-items: center;
-    }
-
-    .nav-links a,
-    .dropdown span {
-      color: white;
-      text-decoration: none;
-      padding: 6px 10px;
-      cursor: pointer;
-    }
-
-    .dropdown {
-      position: relative;
-    }
-
-    .dropdown-content {
-      display: none;
-      position: absolute;
-      top: 100%;
-      left: 0;
-      background: #023e8a;
-      border-radius: 6px;
-      min-width: 160px;
-      z-index: 10;
-    }
-
-    .dropdown-content a {
-      display: block;
-      padding: 10px;
-      color: white;
-      text-decoration: none;
-    }
-
-    .dropdown:hover .dropdown-content {
-      display: block;
-    }
-
-    .social-icons {
-      display: flex;
-      gap: 14px;
-    }
-
-    .social-icons img {
-      width: 20px;
-      height: 20px;
-    }
-
-    /* ROADMAP SECTION */
-    .roadmap {
-      height: calc(100vh - 60px);
-      padding: 40px 30px;
-      overflow-x: auto;
-      overflow-y: hidden;
-    }
-
-    .roadmap-header {
-      max-width: 600px;
-      margin-bottom: 40px;
-    }
-
-    .roadmap-header h1 {
-      font-size: 2.4em;
-      color: #66ccff;
-      margin-bottom: 10px;
-    }
-
-    .roadmap-header p {
-      font-size: 1.2em;
-      line-height: 1.5;
-    }
-
-    /* TIMELINE */
-    .timeline {
-      position: relative;
-      height: 260px;
-      min-width: 2400px;
-    }
-
-    .timeline::before {
-      content: "";
-      position: absolute;
-      top: 130px;
-      left: 0;
-      width: 100%;
-      height: 4px;
-      background: #66ccff;
-    }
-
-    .milestones {
-      display: flex;
-      gap: 60px;
-      height: 100%;
-      align-items: flex-start;
-    }
-
-    .milestone {
-      width: 260px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    .dot {
-      width: 18px;
-      height: 18px;
-      background: #66ccff;
-      border-radius: 50%;
-      margin-top: 121px;
-      margin-bottom: 12px;
-    }
-
-    .card {
-      background: #66ccff;
-      color: #023e8a;
-      padding: 20px;
-      border-radius: 16px;
-      width: 100%;
-      height: 200px;
-      text-align: center;
-      box-shadow: 0 6px 12px rgba(0,0,0,0.3);
-
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-
-    @media (max-width: 768px) {
-      .timeline {
-        min-width: 1600px;
-      }
-
-      .milestone {
-        width: 75vw;
-      }
-    }
-  </style>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>The Journey - ReyRey</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+
 <style>
-  * { margin:0; padding:0; box-sizing:border-box; }
-  html, body { width:100%; height:100%; }
-  body { font-family: Arial, sans-serif; background:#023e8a; color:white; overflow-x:auto; }
+/* ===== GLOBAL ===== */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f4f4f4;
+  overflow-x: hidden;
+}
 
-  /* NAVBAR */
-  nav {
-    height:60px;
-    background: linear-gradient(90deg, #66ccff, #023e8a);
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:0 20px;
+/* ===== NAVBAR (STANDARDIZED) ===== */
+nav {
+  height: 60px;
+  background: linear-gradient(90deg, #66ccff, #023e8a);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.logo {
+  font-family: 'Pacifico', cursive;
+  font-size: 1.6em;
+  color: white;
+  text-decoration: none;
+}
+
+.nav-links {
+  display: flex;
+  gap: 15px;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  font-size: 1em;
+  padding: 8px 10px;
+  border-radius: 6px;
+}
+
+.nav-links a:hover {
+  background: rgba(255,255,255,0.2);
+}
+
+/* ===== ROADMAP SECTION ===== */
+.roadmap-section {
+  height: calc(100vh - 60px);
+  position: relative;
+  background: #eef6fb;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.roadmap {
+  position: relative;
+  height: 100%;
+  min-width: 1600px;
+}
+
+/* Curved SVG line */
+.roadmap svg {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+}
+
+/* ===== ROADMAP ITEMS ===== */
+.milestone {
+  position: absolute;
+  width: 220px;
+  height: 140px;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  padding: 15px;
+  text-align: center;
+}
+
+.milestone h3 {
+  font-size: 1.1em;
+  margin-bottom: 8px;
+  color: #023e8a;
+}
+
+.milestone p {
+  font-size: 0.95em;
+  margin: 0;
+}
+
+/* Dot on the line */
+.dot {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  background: #0077b6;
+  border-radius: 50%;
+}
+
+/* ===== POSITIONING ===== */
+.m1 { left: 150px; top: 20%; }
+.d1 { left: 260px; top: 50%; }
+
+.m2 { left: 450px; top: 60%; }
+.d2 { left: 560px; top: 50%; }
+
+.m3 { left: 750px; top: 30%; }
+.d3 { left: 860px; top: 50%; }
+
+.m4 { left: 1050px; top: 65%; }
+.d4 { left: 1160px; top: 50%; }
+
+.m5 { left: 1350px; top: 25%; }
+.d5 { left: 1460px; top: 50%; }
+
+/* ===== MOBILE ===== */
+@media (max-width: 768px) {
+  .roadmap {
+    min-width: 1400px;
   }
-  .logo { font-family:'Pacifico', cursive; font-size:1.6em; color:white; text-decoration:none; }
-  .nav-links a { color:white; text-decoration:none; margin-right:15px; }
-
-  /* ROADMAP FULL PAGE */
-  .roadmap { height: calc(100vh - 60px); padding:40px 30px; overflow-x:auto; overflow-y:hidden; position:relative; }
-
-  .roadmap-header { max-width:600px; margin-bottom:40px; }
-  .roadmap-header h1 { font-size:2.4em; color:#66ccff; margin-bottom:10px; }
-  .roadmap-header p { font-size:1.2em; line-height:1.5; }
-
-  /* TIMELINE */
-  .timeline {
-    position:relative;
-    min-width:2400px;
-    height:400px;
-    display:flex;
-    align-items:center;
-  }
-
-  .timeline-line {
-    position:absolute;
-    top:50%;
-    left:0;
-    width:100%;
-    height:4px;
-    background:#66ccff;
-    transform: translateY(-50%);
-  }
-
-  /* Milestones */
-  .milestones {
-    display:flex;
-    position:relative;
-    gap:120px;
-  }
-
-  .milestone {
-    width:260px;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    position:relative;
-  }
-
-  .milestone .dot {
-    width:18px; height:18px;
-    background:#66ccff;
-    border-radius:50%;
-    margin-bottom:12px;
-  }
-
-  .milestone .card {
-    background:#66ccff; color:#023e8a;
-    padding:20px; border-radius:16px;
-    width:100%; height:200px;
-    text-align:center;
-    box-shadow:0 6px 12px rgba(0,0,0,0.3);
-    display:flex; flex-direction:column; justify-content:center;
-  }
-
-  /* Zig-zag positions */
-  .milestone:nth-child(3n+1) { top:-120px; }  /* top */
-  .milestone:nth-child(3n+2) { top:120px; }   /* bottom */
-  .milestone:nth-child(3n+3) { top:0px; }     /* middle */
-
-  @media (max-width:768px) {
-    .timeline { min-width:1600px; height:350px; }
-    .milestone { width:75vw; }
-    .milestone:nth-child(3n+1) { top:-100px; }
-    .milestone:nth-child(3n+2) { top:100px; }
-    .milestone:nth-child(3n+3) { top:0px; }
-  }
+}
 </style>
 </head>
+
 <body>
 
-  <nav>
-    <a href="index.html" class="logo">ReyRey</a>
-
-    <div class="nav-links">
-      <a href="about.html">About Me</a>
-      <a href="journey.html">The Journey</a>
-
-      <div class="dropdown">
-        <span>Stats ▼</span>
-        <div class="dropdown-content">
-          <a href="batting.html">Batting</a>
-          <a href="keeping.html">Keeping</a>
-          <a href="match.html">Match Records</a>
-        </div>
-      </div>
-
-      <a href="trophy.html">Trophy Cabinet</a>
-      <a href="gallery.html">Gallery</a>
-    </div>
-
-    <div class="social-icons">
-      <a href="mailto:your-email@gmail.com">
-        <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png">
-      </a>
-      <a href="https://discord.com">
-        <img src="https://cdn-icons-png.flaticon.com/512/2111/2111370.png">
-      </a>
-      <a href="https://instagram.com">
-        <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png">
-      </a>
-    </div>
-  </nav>
-
-  <section class="roadmap">
-    <div class="roadmap-header">
-      <h1>My Journey</h1>
-      <p>You can write anything you want here inside the roadmap.</p>
+<!-- NAVBAR -->
 <nav>
   <a href="index.html" class="logo">ReyRey</a>
   <div class="nav-links">
-    <a href="about.html">About Me</a>
-    <a href="journey.html">The Journey</a>
+    <a href="about.html">About</a>
+    <a href="journey.html">Journey</a>
+    <a href="batting.html">Batting</a>
   </div>
 </nav>
 
-<section class="roadmap">
-  <div class="roadmap-header">
-    <h1>My Journey</h1>
-    <p>This roadmap shows my cricket journey with milestones in a zig-zag layout.</p>
-  </div>
+<!-- ROADMAP -->
+<section class="roadmap-section">
+  <div class="roadmap">
 
-  <div class="timeline">
-    <div class="timeline-line"></div>
-    <div class="milestones">
-      <div class="milestone"><div class="dot"></div><div class="card"><h3>First Match</h3><p>Played my first competitive game.</p></div></div>
-      <div class="milestone"><div class="dot"></div><div class="card"><h3>School Team</h3><p>Selected for the school team.</p></div></div>
-      <div class="milestone"><div class="dot"></div><div class="card"><h3>Top Scorer</h3><p>Highest run scorer.</p></div></div>
-      <div class="milestone"><div class="dot"></div><div class="card"><h3>Captaincy</h3><p>Appointed team captain.</p></div></div>
-      <div class="milestone"><div class="dot"></div><div class="card"><h3>Champions</h3><p>Won a major tournament.</p></div></div>
-      <div class="milestone"><div class="dot"></div><div class="card"><h3>Future Goals</h3><p>Next level ambitions.</p></div></div>
+    <!-- Curved Line -->
+    <svg width="1600" height="200">
+      <path d="M 0 100 C 300 0, 600 200, 900 100 S 1300 0, 1600 100"
+            stroke="#0077b6"
+            stroke-width="6"
+            fill="none"/>
+    </svg>
+
+    <!-- Milestones -->
+    <div class="milestone m1">
+      <h3>Started Cricket</h3>
+      <p>Your beginning here</p>
     </div>
+    <div class="dot d1"></div>
 
-    <div class="timeline">
-      <div class="milestones">
-
-        <div class="milestone">
-          <div class="dot"></div>
-          <div class="card"><h3>Start</h3><p>First match</p></div>
-        </div>
-
-        <div class="milestone">
-          <div class="dot"></div>
-          <div class="card"><h3>Growth</h3><p>School team</p></div>
-        </div>
-
-        <div class="milestone">
-          <div class="dot"></div>
-          <div class="card"><h3>Success</h3><p>Top scorer</p></div>
-        </div>
-
-        <div class="milestone">
-          <div class="dot"></div>
-          <div class="card"><h3>Leader</h3><p>Captaincy</p></div>
-        </div>
-
-        <div class="milestone">
-          <div class="dot"></div>
-          <div class="card"><h3>Champion</h3><p>Tournament win</p></div>
-        </div>
-
-        <div class="milestone">
-          <div class="dot"></div>
-          <div class="card"><h3>Future</h3><p>Next goals</p></div>
-        </div>
-
-      </div>
+    <div class="milestone m2">
+      <h3>First League</h3>
+      <p>Add details</p>
     </div>
-  </section>
+    <div class="dot d2"></div>
+
+    <div class="milestone m3">
+      <h3>Breakthrough Season</h3>
+      <p>Add details</p>
+    </div>
+    <div class="dot d3"></div>
+
+    <div class="milestone m4">
+      <h3>Major Tournament</h3>
+      <p>Add details</p>
+    </div>
+    <div class="dot d4"></div>
+
+    <div class="milestone m5">
+      <h3>Current Goals</h3>
+      <p>Add details</p>
+    </div>
+    <div class="dot d5"></div>
+
   </div>
 </section>
 
 </body>
 </html>
-
-
-
