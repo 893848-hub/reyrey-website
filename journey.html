@@ -35,8 +35,10 @@ nav {
   text-decoration: none;
 }
 
+/* CENTER LINKS */
 .nav-center {
   display: flex;
+  align-items: center;
   gap: 18px;
 }
 
@@ -52,6 +54,41 @@ nav {
   background: rgba(255,255,255,0.2);
 }
 
+/* DROPDOWN */
+.dropdown {
+  position: relative;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: white;
+  min-width: 160px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  overflow: hidden;
+  z-index: 1000;
+}
+
+.dropdown-content a {
+  color: #023e8a;
+  padding: 10px 14px;
+  display: block;
+  text-decoration: none;
+  font-size: 0.95em;
+}
+
+.dropdown-content a:hover {
+  background: #eef6fb;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* SOCIAL ICONS */
 .nav-icons {
   display: flex;
   gap: 14px;
@@ -72,7 +109,6 @@ nav {
   height: calc(100vh - 60px);
   overflow-x: auto;
   overflow-y: hidden;
-  position: relative;
 }
 
 .roadmap {
@@ -81,14 +117,13 @@ nav {
   height: 100%;
 }
 
-/* ===== SVG ===== */
 svg {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
 }
 
-/* ===== BOXES ===== */
+/* BOXES */
 .milestone {
   position: absolute;
   width: 220px;
@@ -111,18 +146,16 @@ svg {
   margin: 0;
 }
 
-/* ===== POSITIONS ===== */
+/* POSITIONS */
 .m1 { left: 100px; top: 15%; }
 .m2 { left: 400px; top: 60%; }
 .m3 { left: 700px; top: 25%; }
 .m4 { left: 1000px; top: 65%; }
 .m5 { left: 1300px; top: 20%; }
 
-/* ===== MOBILE ===== */
+/* MOBILE */
 @media (max-width: 768px) {
-  .roadmap {
-    min-width: 1400px;
-  }
+  .roadmap { min-width: 1400px; }
 }
 </style>
 </head>
@@ -136,7 +169,18 @@ svg {
   <div class="nav-center">
     <a href="about.html">About</a>
     <a href="journey.html">Journey</a>
-    <a href="batting.html">Batting</a>
+
+    <div class="dropdown">
+      <a href="#">Stats ▾</a>
+      <div class="dropdown-content">
+        <a href="batting.html">Batting</a>
+        <a href="keeping.html">Keeping</a>
+        <a href="records.html">Records</a>
+      </div>
+    </div>
+
+    <a href="gallery.html">Gallery</a>
+    <a href="trophies.html">Trophy Cabinet</a>
   </div>
 
   <div class="nav-icons">
@@ -150,17 +194,9 @@ svg {
 <section class="roadmap-section">
   <div class="roadmap">
 
-    <!-- CURVED LINE + DOTS -->
     <svg width="1600" height="200">
-      <!-- Line -->
-      <path d="M 0 100 
-               C 300 0, 600 200, 900 100 
-               S 1300 0, 1600 100"
-            stroke="#0077b6"
-            stroke-width="6"
-            fill="none"/>
-
-      <!-- Dots ON the line -->
+      <path d="M 0 100 C 300 0, 600 200, 900 100 S 1300 0, 1600 100"
+            stroke="#0077b6" stroke-width="6" fill="none"/>
       <circle cx="200" cy="78" r="7" fill="#0077b6"/>
       <circle cx="500" cy="132" r="7" fill="#0077b6"/>
       <circle cx="800" cy="82" r="7" fill="#0077b6"/>
@@ -168,35 +204,14 @@ svg {
       <circle cx="1400" cy="80" r="7" fill="#0077b6"/>
     </svg>
 
-    <!-- MILESTONES -->
-    <div class="milestone m1">
-      <h3>Started Cricket</h3>
-      <p>Add your story</p>
-    </div>
-
-    <div class="milestone m2">
-      <h3>First League</h3>
-      <p>Add your story</p>
-    </div>
-
-    <div class="milestone m3">
-      <h3>Breakthrough</h3>
-      <p>Add your story</p>
-    </div>
-
-    <div class="milestone m4">
-      <h3>Major Tournament</h3>
-      <p>Add your story</p>
-    </div>
-
-    <div class="milestone m5">
-      <h3>Current Goals</h3>
-      <p>Add your story</p>
-    </div>
+    <div class="milestone m1"><h3>Started Cricket</h3><p>Your story</p></div>
+    <div class="milestone m2"><h3>First League</h3><p>Your story</p></div>
+    <div class="milestone m3"><h3>Breakthrough</h3><p>Your story</p></div>
+    <div class="milestone m4"><h3>Major Tournament</h3><p>Your story</p></div>
+    <div class="milestone m5"><h3>Current Goals</h3><p>Your story</p></div>
 
   </div>
 </section>
 
 </body>
 </html>
-
