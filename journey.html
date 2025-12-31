@@ -6,28 +6,26 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
 
 <style>
 /* ===== GLOBAL ===== */
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  background: #f4f4f4;
+  background: #eef6fb;
   overflow-x: hidden;
 }
 
-/* ===== NAVBAR (STANDARDIZED) ===== */
+/* ===== NAVBAR ===== */
 nav {
   height: 60px;
   background: linear-gradient(90deg, #66ccff, #023e8a);
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
   padding: 0 20px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-  position: sticky;
-  top: 0;
-  z-index: 1000;
 }
 
 .logo {
@@ -37,47 +35,60 @@ nav {
   text-decoration: none;
 }
 
-.nav-links {
+.nav-center {
   display: flex;
-  gap: 15px;
+  gap: 18px;
 }
 
-.nav-links a {
+.nav-center a {
   color: white;
   text-decoration: none;
   font-size: 1em;
-  padding: 8px 10px;
+  padding: 6px 10px;
   border-radius: 6px;
 }
 
-.nav-links a:hover {
+.nav-center a:hover {
   background: rgba(255,255,255,0.2);
 }
 
-/* ===== ROADMAP SECTION ===== */
+.nav-icons {
+  display: flex;
+  gap: 14px;
+}
+
+.nav-icons a {
+  color: white;
+  font-size: 1.2em;
+  text-decoration: none;
+}
+
+.nav-icons a:hover {
+  opacity: 0.8;
+}
+
+/* ===== ROADMAP ===== */
 .roadmap-section {
   height: calc(100vh - 60px);
-  position: relative;
-  background: #eef6fb;
   overflow-x: auto;
   overflow-y: hidden;
+  position: relative;
 }
 
 .roadmap {
   position: relative;
-  height: 100%;
   min-width: 1600px;
+  height: 100%;
 }
 
-/* Curved SVG line */
-.roadmap svg {
+/* ===== SVG ===== */
+svg {
   position: absolute;
   top: 50%;
-  left: 0;
   transform: translateY(-50%);
 }
 
-/* ===== ROADMAP ITEMS ===== */
+/* ===== BOXES ===== */
 .milestone {
   position: absolute;
   width: 220px;
@@ -91,8 +102,8 @@ nav {
 
 .milestone h3 {
   font-size: 1.1em;
-  margin-bottom: 8px;
   color: #023e8a;
+  margin-bottom: 6px;
 }
 
 .milestone p {
@@ -100,30 +111,12 @@ nav {
   margin: 0;
 }
 
-/* Dot on the line */
-.dot {
-  position: absolute;
-  width: 14px;
-  height: 14px;
-  background: #0077b6;
-  border-radius: 50%;
-}
-
-/* ===== POSITIONING ===== */
-.m1 { left: 150px; top: 20%; }
-.d1 { left: 260px; top: 50%; }
-
-.m2 { left: 450px; top: 60%; }
-.d2 { left: 560px; top: 50%; }
-
-.m3 { left: 750px; top: 30%; }
-.d3 { left: 860px; top: 50%; }
-
-.m4 { left: 1050px; top: 65%; }
-.d4 { left: 1160px; top: 50%; }
-
-.m5 { left: 1350px; top: 25%; }
-.d5 { left: 1460px; top: 50%; }
+/* ===== POSITIONS ===== */
+.m1 { left: 100px; top: 15%; }
+.m2 { left: 400px; top: 60%; }
+.m3 { left: 700px; top: 25%; }
+.m4 { left: 1000px; top: 65%; }
+.m5 { left: 1300px; top: 20%; }
 
 /* ===== MOBILE ===== */
 @media (max-width: 768px) {
@@ -139,10 +132,17 @@ nav {
 <!-- NAVBAR -->
 <nav>
   <a href="index.html" class="logo">ReyRey</a>
-  <div class="nav-links">
+
+  <div class="nav-center">
     <a href="about.html">About</a>
     <a href="journey.html">Journey</a>
     <a href="batting.html">Batting</a>
+  </div>
+
+  <div class="nav-icons">
+    <a href="mailto:your@email.com"><i class="fa-solid fa-envelope"></i></a>
+    <a href="#"><i class="fa-brands fa-discord"></i></a>
+    <a href="https://instagram.com" target="_blank"><i class="fa-brands fa-instagram"></i></a>
   </div>
 </nav>
 
@@ -150,47 +150,53 @@ nav {
 <section class="roadmap-section">
   <div class="roadmap">
 
-    <!-- Curved Line -->
+    <!-- CURVED LINE + DOTS -->
     <svg width="1600" height="200">
-      <path d="M 0 100 C 300 0, 600 200, 900 100 S 1300 0, 1600 100"
+      <!-- Line -->
+      <path d="M 0 100 
+               C 300 0, 600 200, 900 100 
+               S 1300 0, 1600 100"
             stroke="#0077b6"
             stroke-width="6"
             fill="none"/>
+
+      <!-- Dots ON the line -->
+      <circle cx="200" cy="78" r="7" fill="#0077b6"/>
+      <circle cx="500" cy="132" r="7" fill="#0077b6"/>
+      <circle cx="800" cy="82" r="7" fill="#0077b6"/>
+      <circle cx="1100" cy="135" r="7" fill="#0077b6"/>
+      <circle cx="1400" cy="80" r="7" fill="#0077b6"/>
     </svg>
 
-    <!-- Milestones -->
+    <!-- MILESTONES -->
     <div class="milestone m1">
       <h3>Started Cricket</h3>
-      <p>Your beginning here</p>
+      <p>Add your story</p>
     </div>
-    <div class="dot d1"></div>
 
     <div class="milestone m2">
       <h3>First League</h3>
-      <p>Add details</p>
+      <p>Add your story</p>
     </div>
-    <div class="dot d2"></div>
 
     <div class="milestone m3">
-      <h3>Breakthrough Season</h3>
-      <p>Add details</p>
+      <h3>Breakthrough</h3>
+      <p>Add your story</p>
     </div>
-    <div class="dot d3"></div>
 
     <div class="milestone m4">
       <h3>Major Tournament</h3>
-      <p>Add details</p>
+      <p>Add your story</p>
     </div>
-    <div class="dot d4"></div>
 
     <div class="milestone m5">
       <h3>Current Goals</h3>
-      <p>Add details</p>
+      <p>Add your story</p>
     </div>
-    <div class="dot d5"></div>
 
   </div>
 </section>
 
 </body>
 </html>
+
