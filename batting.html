@@ -2,194 +2,227 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<title>Batting Stats - ReyRey</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Cricket Stats</title>
-<style>
-  body {
-    font-family: Arial, sans-serif;
-    padding: 80px 20px 40px;
-    background-color: #f0f0f0;
-  }
 
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+<style>
+/* ===== GLOBAL ===== */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f4f4f4;
+}
+
+/* ===== NAVBAR ===== */
 nav {
-  height:60px;
+  height: 60px;
   background: linear-gradient(90deg, #66ccff, #023e8a);
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-  position: sticky;
-  top: 0;
-  z-index: 1000;
 }
 
 .logo {
-  font-family:'Pacifico', cursive;
-  font-size:1.6em;
-  color:white;
-  text-decoration:none;
+  font-family: 'Pacifico', cursive;
+  font-size: 1.6em;
+  color: white;
+  text-decoration: none;
 }
 
-.nav-links {
-  display:flex;
-  align-items:center;
-  gap:15px;
+.nav-center {
+  display: flex;
+  align-items: center;
+  gap: 18px;
 }
 
-.nav-links a {
-  color:white;
-  text-decoration:none;
-  font-size:1em;
-  padding:8px 10px;
-  transition: background 0.3s, color 0.3s;
+.nav-center a {
+  color: white;
+  text-decoration: none;
+  font-size: 1em;
+  padding: 6px 10px;
+  border-radius: 6px;
 }
 
-.nav-links a:hover {
+.nav-center a:hover {
   background: rgba(255,255,255,0.2);
-  border-radius:6px;
 }
 
+/* DROPDOWN */
+.dropdown {
+  position: relative;
+}
 
-  .stats-container {
-    max-width: 900px;
-    margin: 0 auto;
-    background-color: #fff;
-    border-radius: 15px;
-    padding: 40px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    text-align: center;
-  }
+.dropdown-content {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: white;
+  min-width: 160px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  overflow: hidden;
+  z-index: 1000;
+}
 
-  .profile-pic {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 4px solid #333;
-    margin-bottom: 20px;
-  }
+.dropdown-content a {
+  color: #023e8a;
+  padding: 10px 14px;
+  display: block;
+  text-decoration: none;
+  font-size: 0.95em;
+}
 
-  .main-stats {
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-    flex-wrap: wrap;
-    margin-bottom: 40px;
-  }
+.dropdown-content a:hover {
+  background: #eef6fb;
+}
 
-  .stat-box {
-    background-color: #4CAF50;
-    color: white;
-    padding: 20px;
-    border-radius: 10px;
-    min-width: 100px;
-    text-align: center;
-    font-size: 1.2rem;
-  }
+.dropdown:hover .dropdown-content {
+  display: block;
+}
 
-  table {
-    width: 100%;
-    border-collapse: collapse;
-  }
+/* SOCIAL ICONS */
+.nav-icons {
+  display: flex;
+  gap: 14px;
+}
 
-  th, td {
-    padding: 12px;
-    border: 1px solid #ddd;
-    text-align: center;
-  }
+.nav-icons a {
+  color: white;
+  font-size: 1.2em;
+  text-decoration: none;
+}
 
-  th {
-    background-color: #333;
-    color: white;
-  }
+/* ===== MAIN ===== */
+main {
+  padding: 40px 20px;
+}
 
+h1 {
+  font-size: 1.6em;
+  color: #023e8a;
+  margin-bottom: 20px;
+}
+
+/* ===== TABLE ===== */
+.table-wrapper {
+  overflow-x: auto;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 900px;
+}
+
+th, td {
+  padding: 10px 12px;
+  border-bottom: 1px solid #ddd;
+  text-align: center;
+  font-size: 0.95em;
+}
+
+th {
+  background: #0077b6;
+  color: white;
+  position: sticky;
+  top: 0;
+}
+
+tbody tr:hover {
+  background: #f0f8ff;
+}
 </style>
 </head>
+
 <body>
 
+<!-- NAVBAR -->
 <nav>
-  <a href="#about">About Me</a>
-  <a href="#journey">The Journey</a>
-  <a href="#stats">Stats</a>
-  <a href="#trophy">Trophy Cabinet</a>
-  <a href="#gallery">Gallery</a>
-</nav>
+  <a href="index.html" class="logo">ReyRey</a>
 
-<section id="stats" class="stats-container">
-  <img src="https://via.placeholder.com/150" alt="Profile Picture" class="profile-pic">
-  
-  <div class="main-stats">
-    <div class="stat-box" id="runs">Runs: --</div>
-    <div class="stat-box" id="avg">AVG: --</div>
-    <div class="stat-box" id="sr">SR: --</div>
-    <div class="stat-box" id="fifties">50s: --</div>
-    <div class="stat-box" id="hundreds">100s: --</div>
+  <div class="nav-center">
+    <a href="about.html">About</a>
+    <a href="journey.html">Journey</a>
+
+    <div class="dropdown">
+      <a href="#">Stats ▾</a>
+      <div class="dropdown-content">
+        <a href="batting.html">Batting</a>
+        <a href="keeping.html">Keeping</a>
+        <a href="records.html">Records</a>
+      </div>
+    </div>
+
+    <a href="gallery.html">Gallery</a>
+    <a href="trophies.html">Trophy Cabinet</a>
   </div>
 
-  <h2>Detailed Stats</h2>
-  <table id="stats-table">
-    <thead>
-      <tr>
-        <th>Match</th>
-        <th>Runs</th>
-        <th>Balls</th>
-        <th>Average</th>
-        <th>Strike Rate</th>
-      </tr>
-    </thead>
-    <tbody>
-      <!-- Data will be populated here from Google Sheet -->
-    </tbody>
-  </table>
-</section>
+  <div class="nav-icons">
+    <a href="mailto:your@email.com"><i class="fa-solid fa-envelope"></i></a>
+    <a href="#"><i class="fa-brands fa-discord"></i></a>
+    <a href="https://instagram.com" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+  </div>
+</nav>
+
+<!-- MAIN CONTENT -->
+<main>
+  <h1>Batting Statistics</h1>
+
+  <div class="table-wrapper">
+    <table id="statsTable">
+      <thead>
+        <tr></tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+</main>
 
 <script>
-  const SHEET_ID = 'YOUR_SHEET_ID';
-  const SHEET_NAME = 'Sheet1'; // change if your sheet has a different name
-  const url = `https://docs.google.com/spreadsheets/d/$1tpkXWvJbm7BDNppoMXhY8w_h4cAXdIpMZn0JnrzzipU/gviz/tq?sheet=${SHEET_NAME}`;
+/* ===== GOOGLE SHEET CONNECTION ===== */
+const sheetId = "1tpkXWvJbm7BDNppoMXhY8w_h4cAXdIpMZn0JnrzzipU";   // <-- replace this
+const sheetName = "Batting_Innings";   // must match tab name exactly
 
-  fetch(url)
-    .then(res => res.text())
-    .then(data => {
-      // parse the JSON from the returned string
-      const jsonData = JSON.parse(data.match(/google\.visualization\.Query\.setResponse\((.*)\)/)[1]);
-      const rows = jsonData.table.rows;
+const url = `https://docs.google.com/spreadsheets/d/${1tpkXWvJbm7BDNppoMXhY8w_h4cAXdIpMZn0JnrzzipU}/gviz/tq?tqx=out:json&sheet=${T20_Cricket_Stats}`;
 
-      const tbody = document.querySelector('#stats-table tbody');
-      let totalRuns = 0;
-      let totalBalls = 0;
-      let fifties = 0;
-      let hundreds = 0;
+fetch(url)
+  .then(res => res.text())
+  .then(text => {
+    const json = JSON.parse(text.substring(47).slice(0, -2));
+    const table = document.getElementById("statsTable");
+    const theadRow = table.querySelector("thead tr");
+    const tbody = table.querySelector("tbody");
 
-      rows.forEach(row => {
-        const match = row.c[0]?.v || '';
-        const runs = row.c[1]?.v || 0;
-        const balls = row.c[2]?.v || 0;
-        const avg = row.c[3]?.v || 0;
-        const sr = row.c[4]?.v || 0;
+    // Headers
+    json.table.cols.forEach(col => {
+      const th = document.createElement("th");
+      th.textContent = col.label;
+      theadRow.appendChild(th);
+    });
 
-        totalRuns += runs;
-        totalBalls += balls;
-        if (runs >= 50 && runs < 100) fifties++;
-        if (runs >= 100) hundreds++;
-
-        const tr = document.createElement('tr');
-        tr.innerHTML = `<td>${match}</td><td>${runs}</td><td>${balls}</td><td>${avg}</td><td>${sr}</td>`;
-        tbody.appendChild(tr);
+    // Rows
+    json.table.rows.forEach(row => {
+      const tr = document.createElement("tr");
+      row.c.forEach(cell => {
+        const td = document.createElement("td");
+        td.textContent = cell ? cell.v : "";
+        tr.appendChild(td);
       });
-
-      // set main stats
-      document.getElementById('runs').textContent = `Runs: ${totalRuns}`;
-      const avgOverall = (totalBalls ? (totalRuns / rows.length).toFixed(2) : 0);
-      document.getElementById('avg').textContent = `AVG: ${avgOverall}`;
-      const srOverall = (totalBalls ? (totalRuns / totalBalls * 100).toFixed(2) : 0);
-      document.getElementById('sr').textContent = `SR: ${srOverall}`;
-      document.getElementById('fifties').textContent = `50s: ${fifties}`;
-      document.getElementById('hundreds').textContent = `100s: ${hundreds}`;
-    })
-    .catch(err => console.log('Error fetching sheet:', err));
+      tbody.appendChild(tr);
+    });
+  })
+  .catch(err => console.error("Sheet error:", err));
 </script>
 
 </body>
 </html>
+
