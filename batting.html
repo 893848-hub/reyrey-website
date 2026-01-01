@@ -192,7 +192,7 @@ tbody tr:hover {
 const sheetId = "1tpkXWvJbm7BDNppoMXhY8w_h4cAXdIpMZn0JnrzzipU";   // <-- replace this
 const sheetName = "Batting_Innings";   // must match tab name exactly
 
-const url = `https://docs.google.com/spreadsheets/d/1tpkXWvJbm7BDNppoMXhY8w_h4cAXdIpMZn0JnrzzipU/gviz/tq?tqx=out:json&sheet={Batting_Innings}`;
+const url = `https://docs.google.com/spreadsheets/d/1tpkXWvJbm7BDNppoMXhY8w_h4cAXdIpMZn0JnrzzipU}/gviz/tq?tqx=out:json&sheet=${Batting_Innings}`;
 
 fetch(url)
   .then(res => res.text())
