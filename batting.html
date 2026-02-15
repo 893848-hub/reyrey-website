@@ -188,41 +188,54 @@ tbody tr:hover {
 </main>
 
 <script>
-/* ===== GOOGLE SHEET CONNECTION ===== */
-const sheetId = "1tpkXWvJbm7BDNppoMXhY8w_h4cAXdIpMZn0JnrzzipU";   // <-- replace this
-const sheetName = "Batting_Innings";   // must match tab name exactly
 
-const url = `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?tqx=out:json&sheet=${sheetName}`;
+/* ===== GOOGLE SHEET CONNECTION ===== */
+
+const sheetId = "1tpkXWvJbm7BDNppoMXhY8w_h4cAXdIpMZn0JnrzzipU";
+const sheetName = "Batting_Innings";
+
+/* Only pull columns A → L */
+const columnQuery = "SELECT A,B,C,D,E,F,G,H,I,J,K,L";
+
+const url =
+`https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?tqx=out:json&tq=${encodeURIComponent(columnQuery)}&sheet=${sheetName}`;
 
 fetch(url)
-  .then(res => res.text())
-  .then(text => {
-    const json = JSON.parse(text.substring(47).slice(0, -2));
-    const table = document.getElementById("statsTable");
-    const theadRow = table.querySelector("thead tr");
-    const tbody = table.querySelector("tbody");
+.then(res => res.text())
+.then(text => {
 
-    // Headers
-    json.table.cols.forEach(col => {
-      const th = document.createElement("th");
-      th.textContent = col.label;
-      theadRow.appendChild(th);
+  const json = JSON.parse(text.substring(47).slice(0, -2));
+
+  const table = document.getElementById("statsTable");
+  const theadRow = table.querySelector("thead tr");
+  const tbody = table.querySelector("tbody");
+
+  /* HEADERS */
+  json.table.cols.forEach(col => {
+    const th = document.createElement("th");
+    th.textContent = col.label;
+    theadRow.appendChild(th);
+  });
+
+  /* ROWS */
+  json.table.rows.forEach(row => {
+
+    const tr = document.createElement("tr");
+
+    row.c.forEach(cell => {
+      const td = document.createElement("td");
+      td.textContent = cell ? cell.v : "";
+      tr.appendChild(td);
     });
 
-    // Rows
-    json.table.rows.forEach(row => {
-      const tr = document.createElement("tr");
-      row.c.forEach(cell => {
-        const td = document.createElement("td");
-        td.textContent = cell ? cell.v : "";
-        tr.appendChild(td);
-      });
-      tbody.appendChild(tr);
-    });
-  })
-  .catch(err => console.error("Sheet error:", err));
+    tbody.appendChild(tr);
+
+  });
+
+})
+.catch(err => console.error("Sheet error:", err));
+
 </script>
 
 </body>
 </html>
-
