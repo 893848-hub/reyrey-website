@@ -9,14 +9,12 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
 
 <style>
-/* ===== GLOBAL ===== */
 body {
   margin: 0;
   font-family: Arial, sans-serif;
   background: #f4f4f4;
 }
 
-/* ===== NAVBAR ===== */
 nav {
   height: 60px;
   background: linear-gradient(90deg, #66ccff, #023e8a);
@@ -36,7 +34,6 @@ nav {
 
 .nav-center {
   display: flex;
-  align-items: center;
   gap: 18px;
 }
 
@@ -52,7 +49,6 @@ nav {
   background: rgba(255,255,255,0.2);
 }
 
-/* DROPDOWN */
 .dropdown {
   position: relative;
 }
@@ -67,7 +63,6 @@ nav {
   border-radius: 8px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.2);
   overflow: hidden;
-  z-index: 1000;
 }
 
 .dropdown-content a {
@@ -75,18 +70,12 @@ nav {
   padding: 10px 14px;
   display: block;
   text-decoration: none;
-  font-size: 0.95em;
-}
-
-.dropdown-content a:hover {
-  background: #eef6fb;
 }
 
 .dropdown:hover .dropdown-content {
   display: block;
 }
 
-/* SOCIAL ICONS */
 .nav-icons {
   display: flex;
   gap: 14px;
@@ -95,10 +84,8 @@ nav {
 .nav-icons a {
   color: white;
   font-size: 1.2em;
-  text-decoration: none;
 }
 
-/* ===== MAIN ===== */
 main {
   padding: 40px 20px;
 }
@@ -106,10 +93,8 @@ main {
 h1 {
   font-size: 1.6em;
   color: #023e8a;
-  margin-bottom: 20px;
 }
 
-/* ===== TABLE ===== */
 .table-wrapper {
   overflow-x: auto;
   background: white;
@@ -127,7 +112,6 @@ th, td {
   padding: 10px 12px;
   border-bottom: 1px solid #ddd;
   text-align: center;
-  font-size: 0.95em;
 }
 
 th {
@@ -145,7 +129,6 @@ tbody tr:hover {
 
 <body>
 
-<!-- NAVBAR -->
 <nav>
   <a href="index.html" class="logo">ReyRey</a>
 
@@ -173,7 +156,6 @@ tbody tr:hover {
   </div>
 </nav>
 
-<!-- MAIN CONTENT -->
 <main>
   <h1>Batting Statistics</h1>
 
@@ -189,13 +171,11 @@ tbody tr:hover {
 
 <script>
 
-/* ===== GOOGLE SHEET CONNECTION ===== */
-
 const sheetId = "1tpkXWvJbm7BDNppoMXhY8w_h4cAXdIpMZn0JnrzzipU";
 const sheetName = "Batting_Innings";
 
-/* Only pull columns A → L */
-const columnQuery = "SELECT A,B,C,D,E,F,G,H,I,J,K,L";
+/* Column F removed */
+const columnQuery = "SELECT A,B,C,D,E,G,H,I,J,K,L";
 
 const url =
 `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?tqx=out:json&tq=${encodeURIComponent(columnQuery)}&sheet=${sheetName}`;
@@ -210,16 +190,13 @@ fetch(url)
   const theadRow = table.querySelector("thead tr");
   const tbody = table.querySelector("tbody");
 
-  /* HEADERS */
   json.table.cols.forEach(col => {
     const th = document.createElement("th");
     th.textContent = col.label;
     theadRow.appendChild(th);
   });
 
-  /* ROWS */
   json.table.rows.forEach(row => {
-
     const tr = document.createElement("tr");
 
     row.c.forEach(cell => {
@@ -229,7 +206,6 @@ fetch(url)
     });
 
     tbody.appendChild(tr);
-
   });
 
 })
